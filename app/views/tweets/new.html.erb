@@ -10,7 +10,6 @@
 
   <title>Simple Sidebar - Start Bootstrap Template</title>
 
-  <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
@@ -50,8 +49,8 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-            <li class="nav-item">
-              <%= link_to '質問を投稿する', new_tweet_path, class: 'nav-link' %>
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Link</a>
@@ -72,17 +71,27 @@
       </nav>
 
       <div class="container-fluid">
-        <h1 class="mt-4">投稿一覧</h1>
-          <% @tweets.each do |tweet| %>
-            <div class="content_post" url(<%= tweet.image %>)>
-              <span class="name">
-              
-                <h3><%= tweet.title %></h3>
-              </span>
-              質問内容
-              <p><%= tweet.text %></p>
-           </div>
-          <% end %>
+        <h1 class="mt-4">投稿してみよう</h1>
+          <%= form_with(model: @tweet, local: true) do |f|%>
+            <div class="field">
+              <%= f.label :title, "タイトル" %><br />
+              <%= f.text_field :title %>
+            </div>
+
+            <div class="field">
+              <%= f.label :text, "質問の内容" %><br />
+              <%= f.text_area :text, class: :form__text %>
+            </div>
+
+            <div class="field">
+              <%= f.label :image, "処方箋またはおくすりの写真" %><br />
+              <%= f.file_field :image %>
+            </div>
+
+            <div class="actions">
+              <%= f.submit "投稿！", class: :form__btn  %>
+            </div>
+         <% end %>
       </div>
     </div>
     <!-- /#page-content-wrapper -->
