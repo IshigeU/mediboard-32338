@@ -48,7 +48,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             <li class="nav-item">
-              <%= link_to 'マイページ', tweets_path, class: 'nav-link' %>
+              <%= link_to '質問を編集する', edit_tweet_path, class: 'nav-link' %>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -67,27 +67,17 @@
       </nav>
 
       <div class="container-fluid">
-        <h1 class="mt-4">投稿してみよう</h1>
-          <%= form_with(model: @tweet, local: true) do |f|%>
-            <div class="field">
-              <%= f.label :title, "タイトル" %><br />
-              <%= f.text_field :title %>
-            </div>
-
-            <div class="field">
-              <%= f.label :text, "質問の内容" %><br />
-              <%= f.text_area :text, class: :form__text %>
-            </div>
-
-            <div class="field">
-              <%= f.label :image, "処方箋またはおくすりの写真" %><br />
-              <%= f.file_field :image %>
-            </div>
-
-            <div class="actions">
-              <%= f.submit "投稿！", class: :form__btn  %>
-            </div>
-         <% end %>
+        <h1 class="mt-4">投稿詳細</h1>
+        <div class="content_post">
+              <span class="name">
+                タイトル
+                <h3><%= link_to "#{@tweet.title}",edit_tweet_path %></h3>
+              </span>
+              質問内容
+              <p><%= @tweet.text %></p>
+              <%= @tweet.images %>
+              <p><%= link_to "by#{@tweet.user.name}","/users/#{@tweet.user_id}", class: :card__user %></p>
+           </div>
       </div>
     </div>
     <!-- /#page-content-wrapper -->

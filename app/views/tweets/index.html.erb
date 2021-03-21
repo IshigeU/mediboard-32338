@@ -28,10 +28,7 @@
         <%= link_to 'mediboard', root_path %>
       </div>
       <div class="list-group list-group-flush">
-        <a href="#" class="list-group-item list-group-item-action bg-light"><%=current_user.name%></a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Shortcuts</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Overview</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Events</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light"><%=current_user.name%>さん</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">Status</a>
       </div>
@@ -53,24 +50,16 @@
             <li class="nav-item">
               <%= link_to '質問を投稿する', new_tweet_path, class: 'nav-link' %>
             </li>
-            <li class="nav-item">
-              <%= link_to '薬歴管理', "#", class: 'nav-link' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'お薬データベース', "#", class: 'nav-link' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to '薬剤師検索', "#", class: 'nav-link' %>
-            </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown
+                Menu
               </a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
+                <%= link_to '薬歴管理', "#", class: "dropdown-item" %>
+                <%= link_to 'お薬データベース', "#", class: "dropdown-item" %>
+                <%= link_to '薬剤師検索', "#", class: "dropdown-item" %>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
+                <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "dropdown-item" %>
               </div>
             </li>
           </ul>
@@ -83,11 +72,12 @@
             <div class="content_post">
               <span class="name">
               タイトル
-                <h3><%= tweet.title %></h3>
+                <h3><%= link_to "#{tweet.title}",tweet_path(tweet.id) %></h3>
               </span>
               質問内容
               <p><%= tweet.text %></p>
               <%= tweet.images %>
+              <p><%= link_to "by#{tweet.user.name}","/users/#{tweet.user_id}", class: :card__user %></p>
            </div>
           <% end %>
       </div>
