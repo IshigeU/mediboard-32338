@@ -47,11 +47,6 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-            <li class="nav-item">
-              <%= link_to '投稿を編集する', edit_tweet_path, class: 'nav-link' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to '投稿を削除する', tweet_path(@tweet.id), method: :delete, class: 'nav-link' %>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Menu
@@ -70,16 +65,29 @@
 
       <div class="container-fluid">
         <h1 class="mt-4">投稿詳細</h1>
-        <div class="content_post">
-              <span class="name">
-                タイトル
-                <h3><%= link_to "#{@tweet.title}",edit_tweet_path %></h3>
-              </span>
-              質問内容
-              <p><%= @tweet.text %></p>
-              <%= image_tag @tweet.image, class: 'tweet-image' if @tweet.image.attached? %>
-              <p><%= link_to "by#{@tweet.user.name}","/users/#{@tweet.user_id}", class: :card__user %></p>
-           </div>
+          <tbody>
+          <tr>
+            <th class="table__col1">名前</th>
+            <td class="table__col2"><%= "#{@user.name}" %></td>
+          </tr>
+          <tr>
+            <th class="table__col1">プロフィール</th>
+            <td class="table__col2"><%="#{@user.email}" %></td>
+          </tr>
+        </tbody>
+      </table>
+      <h2 class="page-heading">
+        <%= "#{@user.name}さんの投稿"%>
+      </h2>
+      <div class="user__card">
+        <%# そのユーザーが投稿した投稿投稿一覧を表示する %>
+        <div class="card">
+            <%#= image_tag @tweets.image, class: 'tweet-image' if @tweets.image.attached? %>
+
+          <div class="card__body">
+
+          </div>
+        </div>
       </div>
     </div>
     <!-- /#page-content-wrapper -->
