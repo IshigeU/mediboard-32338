@@ -54,7 +54,13 @@
               <%= link_to '質問を投稿する', new_tweet_path, class: 'nav-link' %>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
+              <%= link_to '薬歴管理', "#", class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'お薬データベース', "#", class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to '薬剤師検索', "#", class: 'nav-link' %>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -74,13 +80,14 @@
       <div class="container-fluid">
         <h1 class="mt-4">投稿一覧</h1>
           <% @tweets.each do |tweet| %>
-            <div class="content_post" url(<%= tweet.image %>)>
+            <div class="content_post">
               <span class="name">
-              
+              タイトル
                 <h3><%= tweet.title %></h3>
               </span>
               質問内容
               <p><%= tweet.text %></p>
+              <%= tweet.images %>
            </div>
           <% end %>
       </div>
