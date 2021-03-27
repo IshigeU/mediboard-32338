@@ -77,7 +77,7 @@
               </span>
               質問内容
               <p><%= @tweet.text %></p>
-              <%= @tweet.images %>
+              <%= image_tag @tweet.image, class: 'tweet-image' if @tweet.image.attached? %>
               <p><%= link_to "by#{@tweet.user.name}","/users/#{@tweet.user_id}", class: :card__user %></p>
            </div>
       </div>
