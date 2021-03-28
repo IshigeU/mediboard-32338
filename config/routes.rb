@@ -9,5 +9,9 @@ Rails.application.routes.draw do
     resources :messages, only: [:create, :destroy]
   end
   #resources :profiles, only: [:show]
+  # フォローする
+  post 'follow/:id' => 'relationships#follow', as: 'follow'
+  # フォロー外す
+  post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow'
 
 end
