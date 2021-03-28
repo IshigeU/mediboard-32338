@@ -67,11 +67,11 @@
         <h1 class="mt-4">投稿詳細</h1>
           <tbody>
           <tr>
-            <th class="table__col1">名前</th>
+            <p><th class="table__col1">名前</th></p>
             <td class="table__col2"><%= "#{@user.name}" %></td>
           </tr>
           <tr>
-            <th class="table__col1">プロフィール</th>
+            <p><th class="table__col1">プロフィール</th></p>
             <td class="table__col2"><%="#{@user.email}" %></td>
           </tr>
         </tbody>
@@ -79,13 +79,47 @@
       <h2 class="page-heading">
         <%= "#{@user.name}さんの投稿"%>
       </h2>
+      <h2>ユーザー詳細ページ</h2>
+      <p><%= "フォロー数: #{@user.follower.count}" %></p>
+      <p><%= "フォロワー数: #{@user.followed.count}" %></p>
+      <% unless @user == current_user %>
+        <% if current_user.following?(@user) %>
+          <%= link_to 'フォロー外す', unfollow_path(@user.id), method: :POST %>
+        <% else %>
+          <%= link_to 'フォローする', follow_path(@user.id), method: :POST %>
+        <% end %>
+      <% end %>
+      <p></p>
+
+      <h3>フォロー一覧</h3>
+        <% @user.following_user.where.not(id: current_user.id).each do |user| %>
+          <p>
+            <%= "#{@user.name}さん" %>
+            <% if current_user.following?(user) %>
+              <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
+            <% else %>
+              <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
+            <% end %>
+            <%= link_to "プロフィール", user_path(user) %>
+          </p>
+        <% end %>
+      <h3>フォロワー一覧</h3>
+        <% @user.follower_user.where.not(id: current_user.id).each do |user| %>
+          <p>
+            <%= "#{@user.name}さん" %>
+            <% if current_user.following?(user) %>
+              <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
+            <% else %>
+              <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
+            <% end %>
+            <%= link_to "プロフィール", user_path(user) %>
+          </p>
+        <% end %>
       <div class="user__card">
         <%# そのユーザーが投稿した投稿投稿一覧を表示する %>
         <div class="card">
             <%#= image_tag @tweets.image, class: 'tweet-image' if @tweets.image.attached? %>
-
           <div class="card__body">
-
           </div>
         </div>
       </div>

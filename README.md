@@ -27,7 +27,6 @@ has_many :follower_user, through: :followed, source: :follower # 自分をフォ
 | ----------------- | ----------- | ---------------------------------------------- |
 | follower          | references  | null: false, foreign_key: { to_table: :users } |
 | followed          | references  | null: false, foreign_key: { to_table: :users } |
-| user              | references  | null: false, foreign_key: true                 |
 
 # アソシエーション
 belongs_to :follower, class_name: "User"
@@ -51,7 +50,7 @@ has_one_attached
 
 
 
-## **comments テーブル**
+## **messages テーブル**
 
 | Column           | Type         | Options                        |
 | ---------------- | ------------ | ------------------------------ |
