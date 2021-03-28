@@ -24,8 +24,8 @@ class TweetsController < ApplicationController
 
   def show
     @tweet = Tweet.find(params[:id])
-    #@comment = Comment.new
-    #@comments = @tweet.comments.includes(:user)
+    @message = Message.new
+    @messages = @tweet.messages.includes(:user)
   end
 
   def update
