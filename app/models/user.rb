@@ -30,6 +30,11 @@ class User < ApplicationRecord
     following_user.include?(user)
   end
 
+  has_many :likes
+  def liked_by?(tweet_id)
+    likes.where(tweet_id: tweet_id).exists?
+  end
+
 
 
   validates :name, presence: true

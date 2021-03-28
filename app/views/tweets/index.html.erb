@@ -78,6 +78,20 @@
               <p><%= tweet.text %></p>
               <%= image_tag tweet.image, class: 'tweet-image' if tweet.image.attached? %>
               <p><%= link_to "by#{tweet.user.name}","/users/#{tweet.user_id}", class: :card__user %></p>
+              <% if current_user.liked_by?(tweet.id) %>
+                <td>
+                  <%= link_to 'いいね外す', destroy_like_path(tweet), method: :DELETE %>
+                  <i class="far fa-smile unlike-btn"></i>
+                  <%= tweet.likes.count %>
+                </td>
+              <% else %>
+                <td>
+                  <%= link_to 'いいねする', create_like_path(tweet), method: :POST %>
+                  <i class="far fa-smile like-btn"></i>
+                  <%= tweet.likes.count %>
+                </td>
+              <% end %>
+                <td><%= link_to '投稿を削除', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
            </div>
           <% end %>
       </div>
