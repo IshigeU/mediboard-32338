@@ -2,9 +2,8 @@ Rails.application.routes.draw do
   get 'messages/new'
   devise_for :users
 
-  #get 'homes/index'
   root to: "homes#index"
-  resources :users, only: [:new, :edit, :update, :show]
+  resources :users, only: [:new, :create, :edit, :update, :show]
   # 投稿機能
   resources :tweets do
     resources :messages, only: [:create, :destroy]
