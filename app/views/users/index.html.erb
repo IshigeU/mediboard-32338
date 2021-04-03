@@ -1,6 +1,6 @@
 <% if user_signed_in? %>
   <h1>ユーザー一覧画面</h1>
-  <% @user.each do |user| %>
+  <% @users.each do |user| %>
     <p>
       <%= "id: #{user.id} email: #{user.email}" %>
       <% if current_user.following?(user) %>

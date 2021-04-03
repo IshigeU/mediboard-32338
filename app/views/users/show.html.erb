@@ -30,7 +30,72 @@
       <div class="list-group list-group-flush">
         <a href="#" class="list-group-item list-group-item-action bg-light"><%=current_user.name%>さん</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Status</a>
+        <table class="table">
+          <tbody>
+            <tr>
+              <th class="table__col1">地域</th>
+              <td class="table__col2"><%= "#{current_user.prefecture.name}" %></td>
+            </tr>
+            <tr>
+              <th class="table__col1">性別</th>
+              <td class="table__col2"><%="#{current_user.sex.name}" %></td>
+            </tr>
+            <tr>
+              <th class="table__col1">年齢</th>
+              <td class="table__col2"><%="#{current_user.age.name}" %></td>
+            </tr>
+            <tr>
+              <th class="table__col1">自己紹介</th>
+              <td class="table__col2"><%="#{current_user.content}" %></td>
+            </tr>
+            <tr>
+              <th class="table__col1">店舗名</th>
+              <td class="table__col2"><%= "#{current_user.shop_name}" %></td>
+            </tr>
+            <tr>
+              <th class="table__col1">住所</th>
+              <td class="table__col2"><%= "#{current_user.address}" %></td>
+            </tr>
+            <script type="text/javascript">
+                  function initMap() {
+                    //latitude,longitudeから位置を特定
+                    var test ={lat: <%= @user.latitude %>, lng: <%= @user.longitude %>};
+                    var map = new google.maps.Map(document.getElementById('map'), {
+                              zoom: 15, 
+                              center: test
+                              });
+                    var transitLayer = new google.maps.TransitLayer();
+                    transitLayer.setMap(map);
+
+                    var contentString = '住所：<%= @user.address %>';
+                    var infowindow = new google.maps.InfoWindow({
+                      content: contentString
+                    });
+
+                    //Map上の指定した位置にピンを挿して表示する
+                    var marker = new google.maps.Marker({
+                                  position:test,
+                                  map: map,
+                                  title: contentString
+                                });
+
+                    marker.addListener('click', function() {
+                      infowindow.open(map, marker);
+                    });
+                  }
+            </script>
+
+            <script async defer
+                          src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
+            </script>
+
+            <style type="text/css">
+              #map { height: 200px;
+                    width: 70%;}
+            </style>
+            <div id="map"></div>
+          </tbody>
+        </table>
       </div>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -64,24 +129,40 @@
       </nav>
 
       <div class="container-fluid">
-        <h1 class="mt-4">投稿詳細</h1>
-          <tbody>
-          <tr>
-            <p><th class="table__col1">名前</th></p>
-            <td class="table__col2"><%= "#{@user.name}" %></td>
-          </tr>
-          <tr>
-            <p><th class="table__col1">プロフィール</th></p>
-            <td class="table__col2"><%="#{@user.email}" %></td>
-          </tr>
-        </tbody>
-      </table>
+        <div class="row">
+          <aside class="col-md-4">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title"><%= @user.name %></h3>
+              </div>
+              <div class="panel-body al-c">
+                  <%# if @user.image? %>
+                    <%#= image_tag @user.image, :class => "mw50" %>
+                  <%# else %>
+                    <%#= image_tag("/images/icon/icon-mama-02-160px.png") %>
+                  <%# end %>
+              </div>
+            </div>
+          </aside>
+          <div class="col-md-8">
+            <p><span class="orange b"><%= @user.name %></span>
+            &nbsp;<%= @user.email %>
+            <% if @user.name.present? %>
+              &nbsp;<%= @user.name %>
+            <% end %>
+              &nbsp;<%= @user.name %></p>
+            <p class="orange b">自己紹介</p>
+            <p><%= @user.name %></p>
+          </div>
+        </div>
+      </div>
       <h2 class="page-heading">
         <%= "#{@user.name}さんの投稿"%>
       </h2>
       <h2>ユーザー詳細ページ</h2>
       <p><%= "フォロー数: #{@user.follower.count}" %></p>
       <p><%= "フォロワー数: #{@user.followed.count}" %></p>
+
       <% unless @user == current_user %>
         <% if current_user.following?(@user) %>
           <%= link_to 'フォロー外す', unfollow_path(@user.id), method: :POST %>
@@ -89,32 +170,65 @@
           <%= link_to 'フォローする', follow_path(@user.id), method: :POST %>
         <% end %>
       <% end %>
-      <p></p>
 
-      <h3>フォロー一覧</h3>
-        <% @user.following_user.where.not(id: current_user.id).each do |user| %>
-          <p>
-            <%= "#{@user.name}さん" %>
-            <% if current_user.following?(user) %>
-              <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
-            <% else %>
-              <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th><h3>フォロー一覧</h3></th>
+            <% @user.following_user.where.not(id: current_user.id).each do |user| %>
+              <p>
+                <%= "#{@user.name}さん" %>
+                <% if current_user.following?(user) %>
+                  <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
+                <% else %>
+                  <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
+                <% end %>
+                <%= link_to "プロフィール", user_path(user) %>
+              </p>
             <% end %>
-            <%= link_to "プロフィール", user_path(user) %>
-          </p>
-        <% end %>
-      <h3>フォロワー一覧</h3>
-        <% @user.follower_user.where.not(id: current_user.id).each do |user| %>
-          <p>
-            <%= "#{@user.name}さん" %>
-            <% if current_user.following?(user) %>
-              <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
-            <% else %>
-              <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
+          </tr>
+          <tr>
+            <th><h3>フォロワー一覧</h3></th>
+            <% @user.follower_user.where.not(id: current_user.id).each do |user| %>
+                <%= "#{@user.name}さん" %>
+              <% if current_user.following?(user) %>
+                <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
+              <% else %>
+                <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
+              <% end %>
+                <%= link_to "プロフィール", user_path(user) %>
             <% end %>
-            <%= link_to "プロフィール", user_path(user) %>
-          </p>
-        <% end %>
+          </tr>
+        </tbody>
+      </table>
+      <table class="table">
+          <tbody>
+            <tr>
+              <th class="table__col1">地域</th>
+              <td class="table__col2"><%= "#{current_user.prefecture.name}" %></td>
+            </tr>
+            <tr>
+              <th class="table__col1">性別</th>
+              <td class="table__col2"><%="#{@user.sex}" %></td>
+            </tr>
+            <tr>
+              <th class="table__col1">店舗名</th>
+              <td class="table__col2"><%= "#{@user.shop_name}" %></td>
+            </tr>
+            <tr>
+              <th class="table__col1">住所</th>
+              <td class="table__col2"><%= "#{@user.address}" %></td>
+            </tr>
+            <tr>
+              <th class="table__col1">店舗紹介</th>
+              <td class="table__col2"><%= "#{@user.shop_info}" %></td>
+            </tr>
+            <tr>
+              <th class="table__col1">自己紹介</th>
+              <td class="table__col2"><%= "#{@user.content}" %></td>
+            </tr>
+          </tbody>
+      </table>
       <div class="user__card">
         <%# そのユーザーが投稿した投稿投稿一覧を表示する %>
         <div class="card">

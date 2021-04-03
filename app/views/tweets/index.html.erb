@@ -28,8 +28,8 @@
         <%= link_to 'mediboard', root_path %>
       </div>
       <div class="list-group list-group-flush">
-        <a href="profiles/show.html.erb" class="list-group-item list-group-item-action bg-light"><%=current_user.name%>さん</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
+        <a href="" class="list-group-item list-group-item-action bg-light"><%=current_user.name%>さん</a>
+        <a href="" class="list-group-item list-group-item-action bg-light">Profile</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">Status</a>
       </div>
     </div>
@@ -68,12 +68,12 @@
 
       <div class="container-fluid">
         <h1 class="mt-4">投稿一覧</h1>
-          <% @tweets.each do |tweet| %>
-            <div class="content_post">
-              <span class="name">
+        <% @tweets.each do |tweet| %>
+          <div class="content_post">
+            <span class="name">
               タイトル
-                <h3><%= link_to "#{tweet.title}",tweet_path(tweet.id) %></h3>
-              </span>
+              <h3><%= link_to "#{tweet.title}",tweet_path(tweet.id) %></h3>
+            </span>
               質問内容
               <p><%= tweet.text %></p>
               <%= image_tag tweet.image, class: 'tweet-image' if tweet.image.attached? %>
@@ -85,15 +85,15 @@
                   <%= tweet.likes.count %>
                 </td>
               <% else %>
-                <td>
-                  <%= link_to 'いいねする', create_like_path(tweet), method: :POST %>
-                  <i class="far fa-smile like-btn"></i>
-                  <%= tweet.likes.count %>
-                </td>
-              <% end %>
-                <td><%= link_to '投稿を削除', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-           </div>
-          <% end %>
+              <td>
+                <%= link_to 'いいねする', create_like_path(tweet), method: :POST %>
+                <i class="far fa-smile like-btn"></i>
+                <%= tweet.likes.count %>
+              </td>
+            <% end %>
+              <td><%= link_to '投稿を削除', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </div>
+        <% end %>
       </div>
     </div>
     <!-- /#page-content-wrapper -->

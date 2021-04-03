@@ -3,9 +3,23 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  #住所から地図を表示させる
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
+
+  extend ActiveHash::Associations::ActiveRecordExtensions
+
   has_many :tweets
   has_many :messages
-  has_one :profile
+  belongs_to_active_hash :prefecture
+  belongs_to_active_hash :sex
+  belongs_to_active_hash :age
+
+  with_options presence: true do
+    validates :name
+  end
+  
   # フォロー取得
   has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   # フォロワー取得
@@ -34,9 +48,5 @@ class User < ApplicationRecord
   def liked_by?(tweet_id)
     likes.where(tweet_id: tweet_id).exists?
   end
-
-
-
-  validates :name, presence: true
 
 end

@@ -1,8 +1,13 @@
 <div class="container-fluid py-4 mw-md">
-  <h1><%= t('.title', resource: resource_name.to_s.humanize) %></h1>
+  <h1><%= t('プロフィール編集', resource: resource_name.to_s.humanize) %></h1>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= bootstrap_devise_error_messages! %>
+
+    <div class="form-group">
+      <%= f.label :アカウント名 %>
+      <%= f.text_field :name, autofocus: true, autocomplete: 'name', class: 'form-control' %>
+    </div>
 
     <div class="form-group">
       <%= f.label :email %>
@@ -26,6 +31,90 @@
       <%= f.password_field :current_password, autocomplete: 'current-password', class: 'form-control' %>
 
       <small class="form-text text-muted"><%= t('.we_need_your_current_password_to_confirm_your_changes') %></small>
+    </div>
+    
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">お住まいの地域</label>
+        <span class="indispensable">任意</span>
+      </div>
+      <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"select-box", id:"prefecture"}) %>
+    </div>
+
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">性別</label>
+        <span class="indispensable">任意</span>
+      </div>
+      <%= f.collection_select(:sex_id, Sex.all, :id, :name, {}, {class:"select-box", id:"sex"}) %>
+    </div>
+
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">年齢</label>
+        <span class="indispensable">任意</span>
+      </div>
+      <%= f.collection_select(:age_id, Age.all, :id, :name, {}, {class:"select-box", id:"age"}) %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :店舗名 %>
+      <%= f.text_field :shop_name, autofocus: true, autocomplete: 'shop_name', class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :店舗住所 %>
+      <%= f.text_field :address, autofocus: true, autocomplete: 'address', class: 'form-control' %>
+    </div>
+    
+    <script type="text/javascript">
+      function initMap() {
+    //latitude,longitudeから位置を特定
+        var test ={lat: <%= @user.latitude %>, lng: <%= @user.longitude %>};
+        var map = new google.maps.Map(document.getElementById('map'), {
+                  zoom: 15, 
+                  center: test
+                  });
+        var transitLayer = new google.maps.TransitLayer();
+        transitLayer.setMap(map);
+
+        var contentString = '住所：<%= @user.address %>';
+        var infowindow = new google.maps.InfoWindow({
+          content: contentString
+        });
+
+    //Map上の指定した位置にピンを挿して表示する
+        var marker = new google.maps.Marker({
+                      position:test,
+                      map: map,
+                      title: contentString
+                    });
+
+        marker.addListener('click', function() {
+          infowindow.open(map, marker);
+        });
+      }
+    </script>
+
+    <script async defer
+                  src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
+    </script>
+
+    <style type="text/css">
+      #map { height: 200px;
+            width: 70%;}
+    </style>
+
+    <div id="map"></div>
+
+    <div class="form-group">
+      <%= f.label :店舗説明 %>
+      <%= f.text_field :shop_info, autofocus: true, autocomplete: 'shop_info', class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :自己紹介 %>
+      <%= f.text_field :content, autofocus: true, autocomplete: 'content', class: 'form-control' %>
     </div>
 
     <div class="form-group">
