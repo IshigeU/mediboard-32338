@@ -9,6 +9,11 @@
       <%= f.text_field :name, autofocus: true, autocomplete: 'name', class: 'form-control' %>
     </div>
 
+    <div class="field">
+      <%= f.label :image, "プロフィール写真" %><br />
+      <%= f.file_field :image %>
+    </div>
+
     <div class="form-group">
       <%= f.label :email %>
       <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control' %>
@@ -55,6 +60,14 @@
         <span class="indispensable">任意</span>
       </div>
       <%= f.collection_select(:age_id, Age.all, :id, :name, {}, {class:"select-box", id:"age"}) %>
+    </div>
+
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">お仕事</label>
+        <span class="indispensable">任意</span>
+      </div>
+      <%= f.collection_select(:job_id, Job.all, :id, :name, {}, {class:"select-box", id:"job"}) %>
     </div>
 
     <div class="form-group">

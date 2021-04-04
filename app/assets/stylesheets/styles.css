@@ -10147,3 +10147,9 @@ header.masthead h1 {
 .tweet-image {
   width: 30%;
 }
+
+.profile-image {
+  width: 100%;
+  height: auto;
+  padding: 20px;
+}

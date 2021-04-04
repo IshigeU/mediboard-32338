@@ -12,9 +12,11 @@ class User < ApplicationRecord
 
   has_many :tweets
   has_many :messages
+  has_one_attached :image
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :sex
   belongs_to_active_hash :age
+  belongs_to_active_hash :job
 
   with_options presence: true do
     validates :name

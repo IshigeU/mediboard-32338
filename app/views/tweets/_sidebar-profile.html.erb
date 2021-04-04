@@ -1,0 +1,42 @@
+<div class="bg-light border-right" id="sidebar-wrapper">
+  <div class="sidebar-heading" >
+    <%= link_to 'mediboard', root_path %>
+  </div>
+  <div class="list-group list-group-flush">
+    <a href="devise/registrations/edit.html.erb" class="list-group-item list-group-item-action bg-light"><%=current_user.name%>さん</a>
+    <tr>
+      <th class="table__col1">プロフィール写真</th>
+      <td>
+        <%= image_tag(current_user.image ,class:"profile-image") %>
+      </td>
+    </tr>
+    <table class="table">
+      <tbody>
+        <tr>
+          <th class="table__col1">地域</th>
+          <td class="table__col2"><%= "#{current_user.prefecture.name}" %></td>
+        </tr>
+        <tr>
+          <th class="table__col1">性別</th>
+          <td class="table__col2"><%="#{current_user.sex.name}" %></td>
+        </tr>
+        <tr>
+          <th class="table__col1">年齢</th>
+          <td class="table__col2"><%="#{current_user.age.name}" %></td>
+        </tr>
+        <tr>
+          <th class="table__col1">自己紹介</th>
+          <td class="table__col2"><%="#{current_user.content}" %></td>
+        </tr>
+        <tr>
+          <th class="table__col1">店舗名</th>
+          <td class="table__col2"><%= "#{current_user.shop_name}" %></td>
+        </tr>
+        <tr>
+          <th class="table__col1">住所</th>
+          <td class="table__col2"><%= "#{current_user.address}" %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
