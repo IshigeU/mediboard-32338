@@ -10153,3 +10153,8 @@ header.masthead h1 {
   height: auto;
   padding: 20px;
 }
+
+.show-profile-image {
+  width: 30%;
+  height: 30%;
+}

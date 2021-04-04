@@ -76,7 +76,7 @@
             <p><span class="orange b"><%= @user.name %>さん</span>
             &nbsp;<%= @user.job.name %>
             <% if @user.image.present? %>
-              &nbsp;<%= @user.image %>
+              <%= image_tag(@user.image ,class:"show-profile-image")%>
             <% end %>
               <%#&nbsp;<%= @user.name %>
             <p class="orange b">自己紹介</p>
@@ -124,7 +124,6 @@
               <% else %>
                 <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
               <% end %>
-                <%= link_to "プロフィール", user_path(user) %>
             <% end %>
           </tr>
         </tbody>
