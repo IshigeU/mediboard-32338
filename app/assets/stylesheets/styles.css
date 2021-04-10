@@ -48,7 +48,8 @@
 }
 
 html {
-  font-family: sans-serif;
+  font-family: 'Raleway', sans-serif;
+  font-family: 'Noto Serif JP', serif;
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -60,7 +61,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 
 body {
   margin: 0;
-  font-family: "Merriweather", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -181,7 +182,7 @@ pre,
 code,
 kbd,
 samp {
-  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family: 'Raleway', sans-serif;
   font-size: 1em;
 }
 
@@ -243,7 +244,7 @@ select,
 optgroup,
 textarea {
   margin: 0;
-  font-family: inherit;
+  font-family: 'Noto Serif JP', serif;
   font-size: inherit;
   line-height: inherit;
 }
@@ -361,7 +362,7 @@ template {
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   margin-bottom: 0.5rem;
-  font-family: "Merriweather Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: 'Raleway', sans-serif;
   font-weight: 500;
   line-height: 1.2;
 }
@@ -5564,7 +5565,8 @@ a.close.disabled {
   z-index: 1070;
   display: block;
   margin: 0;
-  font-family: "Merriweather", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: 'Raleway', sans-serif;
+  font-family: 'Noto Serif JP', serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -5666,7 +5668,8 @@ a.close.disabled {
   z-index: 1060;
   display: block;
   max-width: 276px;
-  font-family: "Merriweather", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: 'Raleway', sans-serif;
+  font-family: 'Noto Serif JP', serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -9649,7 +9652,8 @@ button.bg-dark:focus {
 }
 
 .text-monospace {
-  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+  font-family: 'Raleway', sans-serif;
+  font-family: 'Noto Serif JP', serif;
 }
 
 .text-justify {
@@ -9994,7 +9998,8 @@ hr.light {
 }
 
 .btn {
-  font-family: "Merriweather Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: 'Raleway', sans-serif;
+  font-family: 'Noto Serif JP', serif;
 }
 
 .btn-xl {
@@ -10016,13 +10021,15 @@ hr.light {
   transition: background-color 0.2s ease;
 }
 #mainNav .navbar-brand {
-  font-family: "Merriweather Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: 'Raleway', sans-serif;
+  font-family: 'Noto Serif JP', serif;
   font-weight: 700;
   color: #212529;
 }
 #mainNav .navbar-nav .nav-item .nav-link {
   color: #6c757d;
-  font-family: "Merriweather Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: 'Raleway', sans-serif;
+  font-family: 'Noto Serif JP', serif;
   font-weight: 700;
   font-size: 0.9rem;
   padding: 0.75rem 0;
@@ -10075,12 +10082,13 @@ hr.light {
 header.masthead {
   padding-top: 10rem;
   padding-bottom: calc(10rem - 4.5rem);
-  background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../assets/img/bg-masthead.jpg");
+  background-color:lightgray;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-size: cover;
 }
+
 header.masthead h1 {
   font-size: 2.25rem;
 }
@@ -10128,7 +10136,8 @@ header.masthead h1 {
   text-align: center;
 }
 #portfolio .container-fluid .portfolio-box .portfolio-box-caption .project-category, #portfolio .container-sm .portfolio-box .portfolio-box-caption .project-category, #portfolio .container-md .portfolio-box .portfolio-box-caption .project-category, #portfolio .container-lg .portfolio-box .portfolio-box-caption .project-category, #portfolio .container-xl .portfolio-box .portfolio-box-caption .project-category {
-  font-family: "Merriweather Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: 'Raleway', sans-serif;
+  font-family: 'Noto Serif JP', serif;
   font-size: 0.85rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -10141,7 +10150,7 @@ header.masthead h1 {
 }
 
 .text-white-75 {
-  color: rgba(255, 255, 255, 0.75);
+  color:#000;
 }
 
 .tweet-image {
@@ -10174,4 +10183,12 @@ section {
 
 .whatmedi-bg-color {
   background-color: gray;
+}
+
+.font-tweet {
+  font-family: 'Noto Serif JP', serif;
+}
+
+.font-color {
+  color: #000;
 }
