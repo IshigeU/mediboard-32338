@@ -60,40 +60,51 @@
           </ul>
         </div>
       </nav>
+      <div class="container ">
+        <div class="row font-tweet">
+          <div class="col-md-8">
+            <h1 class="my-4 font-tweet">投稿詳細</h1>
+            <div class="card mb-4">
+              <div class="card-body font-tweet">
+                <%= image_tag @tweet.image, class: 'card-img-top' if @tweet.image.attached? %>
+                <h2 class="card-title"><%= link_to "#{@tweet.title}",tweet_path(@tweet.id) %></h2>
+                <p class="card-text"><%= @tweet.text %></p>
+                <p><%= link_to "#{@tweet.user.name}さん","/users/#{@tweet.user_id}", class: :card__user %></p>
+              </div>
+            </div>
+          </div>
 
-      <div class="container-fluid">
-        <h1 class="mt-4">投稿詳細</h1>
-        <div class="content_post">
-              <span class="name">
-                タイトル
-                <h3><%= link_to "#{@tweet.title}",edit_tweet_path %></h3>
-              </span>
-              質問内容
-              <p><%= @tweet.text %></p>
-              <%= image_tag @tweet.image, class: 'tweet-image' if @tweet.image.attached? %>
-              <p><%= link_to "by#{@tweet.user.name}","/users/#{@tweet.user_id}", class: :card__user %></p>
-
-              <h3>アドバイス</h3>
-              <% if user_signed_in? %>
-                <%= form_with(model: [@tweet, @message], local: true) do |f| %>
-                  <%= f.text_field :text %>
-                  <%= f.submit '投稿！' %>
-                <% end %>
-              <% end %>
-              <ul class="comments_lists">
-               <li class="comments_list" >
-                 <p></p>
-                 <% @messages.each do |message| %>
-                    <p><%= message.text %>
-                       <%= link_to "削除", tweet_message_path(@tweet, message), method: :delete %>
-                    </p>
-                    <p><%= link_to message.user.name, "/users/#{@tweet.user_id}", class: :message_user %></p>
+          <div class="col-md-4">
+            <div class="card my-4">
+              <h5 class="card-header font-tweet">コメント</h5>
+              <div class="card-body">
+                <% if user_signed_in? %>
+                  <%= form_with(model: [@tweet, @message], local: true) do |f| %>
+                    <%= f.text_field :text %>
+                    <%= f.submit '投稿！' %>
                   <% end %>
-                </li>
-              </ul>
-           </div>
+                <% end %>
+                <ul>
+                <div class="comments_lists">
+                <p></p>
+                    <% @messages.each do |message| %>
+                      <li>
+                        <p>
+                          <%= message.text %>
+                          <%= link_to "削除", tweet_message_path(@tweet, message), method: :delete %>
+                        </p>
+                      </li>
+                        <p>
+                          <%= link_to "#{message.user.name}さん", "/users/#{@tweet.user_id}", class: :message_user %>
+                        </p>
+                    <% end %>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
     <!-- /#page-content-wrapper -->
 
   </div>

@@ -40,6 +40,9 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+              <%= link_to 'マイページ', tweets_path, class: 'nav-link' %>
+            </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Menu
@@ -55,117 +58,59 @@
           </ul>
         </div>
       </nav>
-
-      <div class="container-fluid">
+      <div class="container">
         <div class="row">
-          <aside class="col-md-4">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h3 class="panel-title"><%= @user.name %>さん</h3>
-              </div>
-              <div class="panel-body al-c">
-                  <%# if @user.image? %>
-                    <%#= image_tag @user.image, :class => "mw50" %>
-                  <%# else %>
-                    <%#= image_tag("/images/icon/icon-mama-02-160px.png") %>
-                  <%# end %>
+          <div class="col-md-8 font-tweet">
+            <h1 class="my-4 font-tweet">ユーザー紹介</h1>
+            <div class="card mb-4">
+              <div class="card-body">
+                <% if @user.image.present? %>
+                  <%= image_tag(@user.image ,class:"show-profile-image")%>
+                <% end %>
+                <h4 class="card-text"><%= @user.name %>さん</h4>
+                <% unless @user == current_user %>
+                  <% if current_user.following?(@user) %>
+                    <%= link_to 'フォロー外す', unfollow_path(@user.id), method: :POST %>
+                  <% else %>
+                    <%= link_to 'フォローする', follow_path(@user.id), method: :POST %>
+                  <% end %>
+                <% end %>
+                <% if @user.job.name.present? %>
+                  <p class="card-text"><%= @user.job.name %></p>
+                <% end %>
+                <% if @user.age.name.present? %>
+                  <p class="card-text"><%= @user.age.name %></p>
+                <% end %>
+                <% if @user.prefecture.name.present? %>
+                  <p class="card-text"><%= @user.prefecture.name %></p>
+                <% end %>
+                <% if @user.content.present? %>
+                  <p class="card-text"><%= @user.content %></p>
+                <% end %>
+                <p><%= "フォロー数: #{@user.follower.count}" %></p>
+                <p><%= "フォロワー数: #{@user.followed.count}" %></p>
               </div>
             </div>
-          </aside>
-          <div class="col-md-8">
-            <p><span class="orange b"><%= @user.name %>さん</span>
-            &nbsp;<%= @user.job.name %>
-            <% if @user.image.present? %>
-              <%= image_tag(@user.image ,class:"show-profile-image")%>
-            <% end %>
-              <%#&nbsp;<%= @user.name %>
-            <p class="orange b">自己紹介</p>
-            <p><%= @user.content %></p>
           </div>
-        </div>
-      </div>
-      <h2 class="page-heading">
-        <%= "#{@user.name}さんの投稿"%>
-      </h2>
-      <h2>ユーザー詳細ページ</h2>
-      <p><%= "フォロー数: #{@user.follower.count}" %></p>
-      <p><%= "フォロワー数: #{@user.followed.count}" %></p>
-
-      <% unless @user == current_user %>
-        <% if current_user.following?(@user) %>
-          <%= link_to 'フォロー外す', unfollow_path(@user.id), method: :POST %>
-        <% else %>
-          <%= link_to 'フォローする', follow_path(@user.id), method: :POST %>
-        <% end %>
-      <% end %>
-
-      <table class="table">
-        <tbody>
-          <tr>
-            <th><h3>フォロー一覧</h3></th>
-            <% @user.following_user.where.not(id: current_user.id).each do |user| %>
-              <p>
-                <%= "#{@user.name}さん" %>
-                <% if current_user.following?(user) %>
-                  <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
-                <% else %>
-                  <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
-                <% end %>
-                <%= link_to "プロフィール", user_path(user) %>
-              </p>
-            <% end %>
-          </tr>
-          <tr>
-            <th><h3>フォロワー一覧</h3></th>
-            <% @user.follower_user.where.not(id: current_user.id).each do |user| %>
-                <%= "#{@user.name}さん" %>
-              <% if current_user.following?(user) %>
-                <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
-              <% else %>
-                <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
-              <% end %>
-            <% end %>
-          </tr>
-        </tbody>
-      </table>
-      <table class="table">
-          <tbody>
-            <tr>
-              <th class="table__col1">地域</th>
-              <td class="table__col2"><%= "#{@user.prefecture.name}" %></td>
-            </tr>
-            <tr>
-              <th class="table__col1">性別</th>
-              <td class="table__col2"><%="#{@user.sex.name}" %></td>
-            </tr>
-            <tr>
-              <th class="table__col1">職業</th>
-              <td class="table__col2"><%="#{@user.job.name}" %></td>
-            </tr>
-            <tr>
-              <th class="table__col1">店舗名</th>
-              <td class="table__col2"><%= "#{@user.shop_name}" %></td>
-            </tr>
-            <tr>
-              <th class="table__col1">住所</th>
-              <td class="table__col2"><%= "#{@user.address}" %></td>
-            </tr>
-            <tr>
-              <th class="table__col1">店舗紹介</th>
-              <td class="table__col2"><%= "#{@user.shop_info}" %></td>
-            </tr>
-            <tr>
-              <th class="table__col1">自己紹介</th>
-              <td class="table__col2"><%= "#{@user.content}" %></td>
-            </tr>
-          </tbody>
-      </table>
-      <div class="user__card">
-        <%# そのユーザーが投稿した投稿投稿一覧を表示する %>
-        <div class="card">
-            <%#= image_tag @tweets.image, class: 'tweet-image' if @tweets.image.attached? %>
-          <div class="card__body">
-          </div>
+          <table class="table font-tweet">
+            <tbody>
+              <tr>
+                <th class="table__col1">性別</th>
+                <td class="table__col2"><%="#{@user.sex.name}" %></td>
+              </tr>
+              <tr>
+                <th class="table__col1">店舗名</th>
+                <td class="table__col2"><%= "#{@user.shop_name}" %></td>
+              </tr>
+              <tr>
+                <th class="table__col1">住所</th>
+                <td class="table__col2"><%= "#{@user.address}" %></td>
+              </tr>
+              <tr>
+                <th class="table__col1">店舗紹介</th>
+                <td class="table__col2"><%= "#{@user.shop_info}" %></td>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

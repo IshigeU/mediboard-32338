@@ -10192,3 +10192,7 @@ section {
 .font-color {
   color: #000;
 }
+
+.background_test {
+  background: radial-gradient(ellipse at center, rgba(96,171,248,1) 0%,rgba(155,201,247,1) 28%,rgba(155,201,247,1) 18%,rgb(255, 255, 255) 70%);
+}
