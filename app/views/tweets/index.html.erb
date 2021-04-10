@@ -16,6 +16,9 @@
   <!-- Custom styles for this template -->
   <link href="css/simple-sidebar.css" rel="stylesheet">
 
+   <!-- Google fonts-->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP&family=Raleway:ital,wght@1,600&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
@@ -40,14 +43,14 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-            <li class="nav-item">
+            <li class="nav-item font-tweet">
               <%= link_to '質問を投稿する', new_tweet_path, class: 'nav-link' %>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Menu
               </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+              <div class="dropdown-menu dropdown-menu-right font-tweet" aria-labelledby="navbarDropdown">
                 <%= link_to '薬歴管理', "#", class: "dropdown-item" %>
                 <%= link_to 'お薬データベース', "#", class: "dropdown-item" %>
                 <%= link_to '薬剤師検索', "#", class: "dropdown-item" %>
@@ -59,40 +62,105 @@
         </div>
       </nav>
 
-      <div class="container-fluid">
-        <h1 class="mt-4">投稿一覧</h1>
-        <% @tweets.each do |tweet| %>
-          <div class="content_post">
-            <span class="name">
-              タイトル
-              <h3><%= link_to "#{tweet.title}",tweet_path(tweet.id) %></h3>
-            </span>
-              質問内容
-              <p><%= tweet.text %></p>
-              <%= image_tag tweet.image, class: 'tweet-image' if tweet.image.attached? %>
-              <p><%= link_to "by#{tweet.user.name}","/users/#{tweet.user_id}", class: :card__user %></p>
-              <% if current_user.liked_by?(tweet.id) %>
-                <td>
-                  <%= link_to 'いいね外す', destroy_like_path(tweet), method: :DELETE %>
-                  <i class="far fa-smile unlike-btn"></i>
-                  <%= tweet.likes.count %>
-                </td>
-              <% else %>
-              <td>
-                <%= link_to 'いいねする', create_like_path(tweet), method: :POST %>
-                <i class="far fa-smile like-btn"></i>
-                <%= tweet.likes.count %>
-              </td>
-            <% end %>
-              <td><%= link_to '投稿を削除', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8">
+            <h1 class="my-4">投稿一覧</h1>
+            <div class="card mb-4">
+              <div class="card-body">
+                <% @tweets.each do |tweet| %>
+                  <%= image_tag tweet.image, class: 'card-img-top' if tweet.image.attached? %>
+                  <h2 class="card-title"><%= link_to "#{tweet.title}",tweet_path(tweet.id) %></h2>
+                  <p class="card-text"><%= tweet.text %></p>
+                  <% if current_user.liked_by?(tweet.id) %>
+                    <p>
+                      <%= link_to 'いいね外す', destroy_like_path(tweet), method: :DELETE %>
+                      <i class="far fa-smile unlike-btn"></i>
+                      <%= tweet.likes.count %>
+                    </p>
+                  <% else %>
+                    <p>
+                      <%= link_to 'いいねする', create_like_path(tweet), method: :POST %>
+                      <i class="far fa-smile like-btn"></i>
+                      <%= tweet.likes.count %>
+                    </p>
+                  <% end %>
+                  <td><%= link_to '投稿を削除', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <% end %>
+              </div>
+            </div>
           </div>
-        <% end %>
-      </div>
-    </div>
-    <!-- /#page-content-wrapper -->
+            <!-- /#wrapper -->
+            <!-- Sidebar Widgets Column -->
+          <div class="col-md-4">
+
+            <!-- Search Widget -->
+            <div class="card my-4">
+              <h5 class="card-header">投稿検索</h5>
+              <div class="card-body">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Search for...">
+                  <span class="input-group-append">
+                    <button class="btn btn-secondary" type="button">検索!</button>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Categories Widget -->
+            <div class="card my-4">
+              <h5 class="card-header">Categories</h5>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <ul class="list-unstyled mb-0">
+                      <li>
+                        <a href="#">Web Design</a>
+                      </li>
+                      <li>
+                        <a href="#">HTML</a>
+                      </li>
+                      <li>
+                        <a href="#">Freebies</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-6">
+                    <ul class="list-unstyled mb-0">
+                      <li>
+                        <a href="#">JavaScript</a>
+                      </li>
+                      <li>
+                        <a href="#">CSS</a>
+                      </li>
+                      <li>
+                        <a href="#">Tutorials</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Side Widget -->
+            <div class="card my-4">
+              <h5 class="card-header">Side Widget</h5>
+              <div class="card-body">
+                You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+    <!-- /.row -->
 
   </div>
-  <!-- /#wrapper -->
+  <!-- /.container -->
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
