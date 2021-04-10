@@ -45,6 +45,12 @@ class TweetsController < ApplicationController
     end
   end
 
+  def search
+    @tweets = Tweet.all
+    @tweet = Tweet.search(params)
+  end
+
+
   private
 
   def tweet_params
