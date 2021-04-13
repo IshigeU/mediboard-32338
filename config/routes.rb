@@ -7,9 +7,7 @@ Rails.application.routes.draw do
   # 投稿機能
   resources :tweets do
     resources :messages, only: [:create, :destroy]
-    collection do
-      get 'search'
-    end
+    get :search, on: :collection
   end
   #resources :profiles, only: [:show]
   # フォローする
