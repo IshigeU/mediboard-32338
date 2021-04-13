@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :messages, only: [:create, :destroy]
     get :search, on: :collection
   end
+
   #resources :profiles, only: [:show]
   # フォローする
   post 'follow/:id' => 'relationships#follow', as: 'follow'

@@ -70,3 +70,5 @@ gem 'geocoder'
 gem 'dotenv-rails'
 
 gem 'gon'
+
+gem 'high_voltage'
