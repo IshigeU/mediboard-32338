@@ -75,13 +75,13 @@
                     <%= link_to 'フォローする', follow_path(@user.id), method: :POST %>
                   <% end %>
                 <% end %>
-                <% if @user.job.name.present? %>
+                <% if @user.job.present? %>
                   <p class="card-text"><%= @user.job.name %></p>
                 <% end %>
-                <% if @user.age.name.present? %>
+                <% if @user.age.present? %>
                   <p class="card-text"><%= @user.age.name %></p>
                 <% end %>
-                <% if @user.prefecture.name.present? %>
+                <% if @user.prefecture.present? %>
                   <p class="card-text"><%= @user.prefecture.name %></p>
                 <% end %>
                 <% if @user.content.present? %>
@@ -96,7 +96,7 @@
             <tbody>
               <tr>
                 <th class="table__col1">性別</th>
-                <td class="table__col2"><%="#{@user.sex.name}" %></td>
+                <td class="table__col2"><%="#{@user.sex}" %></td>
               </tr>
               <tr>
                 <th class="table__col1">店舗名</th>

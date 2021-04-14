@@ -46,8 +46,7 @@ class TweetsController < ApplicationController
   end
 
   def search
-    @tweets = Tweet.all
-    @tweet = Tweet.search(params)
+    @tweets = Tweet.search(params[:text])
   end
 
 

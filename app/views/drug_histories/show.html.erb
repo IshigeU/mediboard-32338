@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>タイトル</strong>
+  <%= @drug_history.hp_name %>
+</p>
+
+<p>
+  <strong>時間</strong>
+  <%= @drug_history.start_time.strftime("%Y-%m-%d %H:%M") %>
+</p>
+
+<p>
+  <strong>内容</strong>
+  <%= @drug_history.text %>
+</p>
+
+<%= link_to 'Edit', edit_drug_history_path(@drug_history) %> |
+<%= link_to 'Back', drug_histories_path %>

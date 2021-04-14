@@ -8,10 +8,7 @@ class Tweet < ApplicationRecord
   validates :text, presence: true
 
   def self.search(search)
-    if search != ''
-      Tweet.where(['content LIKE ?', "%#{search}%"])
-    else
-      Tweet.all
-    end
+    return Tweet.all unless search
+    Tweet.where(['text LIKE(?)', "%#{search}%"])
   end
 end
