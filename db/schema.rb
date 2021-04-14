@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_04_030827) do
+ActiveRecord::Schema.define(version: 2021_04_14_132722) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -31,6 +31,32 @@ ActiveRecord::Schema.define(version: 2021_04_04_030827) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "drug_histories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "hp_name"
+    t.text "text"
+    t.datetime "start_time"
+    t.bigint "user_id", null: false
+    t.integer "height_id"
+    t.integer "weight_id"
+    t.integer "pressure_id"
+    t.integer "wbc_id"
+    t.integer "hb_id"
+    t.integer "plt_id"
+    t.integer "pt_inr_id"
+    t.integer "ast_id"
+    t.integer "alt_id"
+    t.integer "gdp_id"
+    t.integer "scr_id"
+    t.integer "egfr_id"
+    t.integer "cpk_id"
+    t.integer "crp_id"
+    t.integer "k_id"
+    t.integer "hba1c_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_drug_histories_on_user_id"
   end
 
   create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -105,6 +131,7 @@ ActiveRecord::Schema.define(version: 2021_04_04_030827) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "drug_histories", "users"
   add_foreign_key "messages", "tweets"
   add_foreign_key "messages", "users"
   add_foreign_key "profiles", "users"

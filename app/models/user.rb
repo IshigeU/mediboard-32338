@@ -12,6 +12,7 @@ class User < ApplicationRecord
 
   has_many :tweets
   has_many :messages
+  has_one  :drug_history
   has_one_attached :image
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :sex
