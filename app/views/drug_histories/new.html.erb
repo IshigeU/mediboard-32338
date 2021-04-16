@@ -1,4 +1,9 @@
 <%= form_with(model: @drug_history, local: true) do |f| %>
+  
+  <div class="time">
+    <%= f.label :start_time, class: 'control-label' %>
+    <%= f.date_field :start_time, class: 'form-control' %>
+  </div>
 
   <div class="form-group">
     <div class='form-text-wrap'>
@@ -136,5 +141,8 @@
     <%= f.text_field :hba1c_id, class:"input-default", id:"hba1c", placeholder:"4.6~6.2" %>
   </div>
 
+  <div class="actions">
+    <%= f.submit "記録する！", class: :form__btn  %>
+  </div>
 
 <% end %>

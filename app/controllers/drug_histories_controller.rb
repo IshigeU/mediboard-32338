@@ -13,14 +13,18 @@ class DrugHistoriesController < ApplicationController
   end
 
   def create
-    DrugHistory.create(DrugHistory_parameter)
-    redirect_to DrugHistory_path
+    @drug_history = DrugHistory.new(drughistory_params)
+    if @drug_history.save
+      redirect_to root_path(@drug_history.id)
+    else
+      render :new
+    end
   end
 
   def destroy
-    @drug_history = DrugHistory.find(params[:id])
-    @drug_history.destroy
-    redirect_to DrugHistory_path, notice:'削除しました'
+    drug_history = DrugHistory.find(params[:id])
+    drug_history.destroy
+    redirect_to drug_histories_path, notice:'削除しました'
   end
 
   def edit
@@ -29,8 +33,8 @@ class DrugHistoriesController < ApplicationController
 
   def update
     @drug_history = DrugHistory.find(params[:id])
-    if @drug_history.update(DrugHistory_parameter)
-      redirect_to DrugHistory_path, notice:'編集しました'
+    if @drug_history.update(drughistory_params)
+      redirect_to drug_history_path, notice:'編集しました'
     else
       render 'edit'
     end
@@ -38,8 +42,8 @@ class DrugHistoriesController < ApplicationController
 
   private
 
-  def DrugHistory_parameter
-    params.require(:drug_history).permit(:hp_name, :text, :start_time, :user, :height_id, :weight_id, :pressure_id, :wbc_id, :hb_id, :plt_id, :pt_inr_id, :ast_id, :alt_id, :gdp_id, :scr_id, :egfr_id, :cpk_id, :crp_id, :k_id, :hba1c_id)
+  def drughistory_params
+    params.require(:drug_history).permit(:hp_name, :text, :start_time, :height_id, :weight_id, :pressure_id, :wbc_id, :hb_id, :plt_id, :pt_inr_id, :ast_id, :alt_id, :gdp_id, :scr_id, :egfr_id, :cpk_id, :crp_id, :k_id, :hba1c_id).merge(user_id: current_user.id)
   end
 
 end

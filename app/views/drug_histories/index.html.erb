@@ -1,12 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<h1>自分の日記</h1>
+<h1>検査値の日記</h1>
 
 <table>
   <thead>
     <tr>
-      <th>薬歴管理</th>
-      <th>時間</th>
+      <th>検査後に記録しよう</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,11 +13,11 @@
   <tbody>
     <% @drug_histories.each do |drug_history| %>
       <tr>
-        <td><%= drug_history.hp_name %></td>
-        <td><%= drug_history.start_time.strftime("%Y-%m-%d %H:%M") %></td>
-        <td><%= link_to 'Show', drug_history %></td>
-        <td><%= link_to 'Edit', edit_drug_history_path(drug_history.id) %></td>
-        <td><%= link_to 'Destroy',drug_history_path(drug_history.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= drug_history.start_time %></td>
+
+        <td><%= link_to '詳細', drug_history %></td>
+        <td><%= link_to '編集', edit_drug_history_path(drug_history.id) %></td>
+        <td><%= link_to '削除',drug_history_path(drug_history.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,7 +25,7 @@
 
 <br>
 
-<%= link_to '検査値を記録する', new_drug_history_path %>
+<%= link_to '記録する', new_drug_history_path %>
 
 <%= month_calendar events: @drug_histories do |date, drug_histories| %>
   <%= date.day %>
