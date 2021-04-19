@@ -1,148 +1,246 @@
-<%= form_with(model: @drug_history, local: true) do |f| %>
-  
-  <div class="time">
-    <%= f.label :start_time, class: 'control-label' %>
-    <%= f.date_field :start_time, class: 'form-control' %>
-  </div>
+<!DOCTYPE html>
+<html lang="ja">
 
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">病院・クリニック名</label>
-      <span class="indispensable">任意</span>
-    </div>
-    <%= f.text_field :hp_name, class:"input-default", id:"hp_name", placeholder:"例）○○病院"%>
-  </div>
+<head>
 
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">備考</label>
-      <span class="indispensable">任意</span>
-    </div>
-    <%= f.text_field :text, class:"input-default", id:"text", placeholder:"例）伝えたいこと"%>
-  </div>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">身長</label>
-      <span class="indispensable">任意</span>
-    </div>
-    <%= f.text_field :height_id, class:"input-default", id:"height", placeholder:"" %>
-  </div>
+  <title>Simple Sidebar - Start Bootstrap Template</title>
 
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">体重</label>
-      <span class="indispensable">任意</span>
-    </div>
-    <%= f.text_field :weight_id, class:"input-default", id:"weight", placeholder:"" %>
-  </div>
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">血圧</label>
-      <span class="indispensable">任意</span>
-    </div>
-    <%= f.text_field :pressure_id, class:"input-default", id:"pressure", placeholder:"120/80mmHg" %>
-  </div>
+  <!-- Custom styles for this template -->
+  <link href="css/simple-sidebar.css" rel="stylesheet">
 
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">白血球(WBC)</label>
-      <span class="indispensable">任意</span>
-    </div>
-    <%= f.text_field :wbc_id, class:"input-default", id:"wbc", placeholder:"3.3~8.6" %>
-  </div>
+   <!-- Google fonts-->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP&family=Raleway:ital,wght@1,600&display=swap" rel="stylesheet">
 
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">ヘモグロビン濃度(Hb)</label>
-      <span class="indispensable">任意</span>
-    </div>
-    <%= f.text_field :hb_id, class:"input-default", id:"hb", placeholder:"13.5~17.0" %>
-  </div>
+</head>
 
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">血小板数(PLT)</label>
-      <span class="indispensable">任意</span>
-    </div>
-    <%= f.text_field :plt_id, class:"input-default", id:"plt", placeholder:"13~37万/μL" %>
-  </div>
+<body>
 
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">血液凝固系検査値(PT-INR)</label>
-      <span class="indispensable">任意</span>
-    </div>
-    <%= f.text_field :pt_inr_id, class:"input-default", id:"pt_inr", placeholder:"2.0~3.0" %>
-  </div>
+  <div class="d-flex" id="wrapper">
 
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">AST</label>
-      <span class="indispensable">任意</span>
-    </div>
-    <%= f.text_field :ast_id, class:"input-default", id:"ast", placeholder:"7~38IU/L" %>
-  </div>
+    <!-- Sidebar -->
 
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">ALT</label>
-      <span class="indispensable">任意</span>
-    </div>
-    <%= f.text_field :alt_id, class:"input-default", id:"alt", placeholder:"4~44IU/L" %>
-  </div>
+    <%= render partial: "tweets/sidebar-profile" %>
+    
+    <!-- /#sidebar-wrapper -->
 
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">γ-GDP</label>
-      <span class="indispensable">任意</span>
-    </div>
-    <%= f.text_field :gdp_id, class:"input-default", id:"gdp", placeholder:"男性:80IU/L以下,女性:30IU/L以下" %>
-  </div>
-  
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">血清クレアチニン(Scr)</label>
-      <span class="indispensable">任意</span>
-    </div>
-    <%= f.text_field :scr_id, class:"input-default", id:"scr", placeholder:"男性:0.6~1.1mg/dL,女性:0.4~0.8mg/dL" %>
-  </div>
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
 
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">糸球濾過量(eGFR)</label>
-      <span class="indispensable">任意</span>
-    </div>
-    <%= f.text_field :egfr_id, class:"input-default", id:"egfr", placeholder:"60.0mL/min以上" %>
-  </div>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <button class="btn btn-primary" id="menu-toggle">←→</button>
 
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">CK(CPK)</label>
-      <span class="indispensable">任意</span>
-    </div>
-    <%= f.text_field :cpk_id, class:"input-default", id:"cpk", placeholder:"男性:57~197,女性:32~180" %>
-  </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">カリウム値</label>
-      <span class="indispensable">任意</span>
-    </div>
-    <%= f.text_field :k_id, class:"input-default", id:"k", placeholder:"3.6~4.8" %>
-  </div>
-  
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">血糖値(HbA1c)</label>
-      <span class="indispensable">任意</span>
-    </div>
-    <%= f.text_field :hba1c_id, class:"input-default", id:"hba1c", placeholder:"4.6~6.2" %>
-  </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+              <%= link_to 'マイページ', tweets_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Menu
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <%= link_to '薬歴管理', drug_histories_path, class: "dropdown-item" %>
+                <%= link_to 'お薬データベース', "#", class: "dropdown-item" %>
+                <%= link_to '薬剤師検索', "#", class: "dropdown-item" %>
+                <div class="dropdown-divider"></div>
+                <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
 
-  <div class="actions">
-    <%= f.submit "記録する！", class: :form__btn  %>
-  </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8">
+            <h1 class="my-4 font-tweet">検査値日記</h1>
+            <div class="card mb-4">
+              <div class="card-body">
+                <%= form_with(model: @drug_history, local: true) do |f| %>
+                  <div class="time">
+                    <%= f.label :start_time, class: 'control-label' %>
+                    <%= f.date_field :start_time, class: 'form-control' %>
+                  </div>
 
-<% end %>
+                  <div class="form-group">
+                    <div class='form-text-wrap'>
+                      <label class="form-text">病院・クリニック名</label>
+                      <span class="indispensable">任意</span>
+                    </div>
+                    <%= f.text_field :hp_name, class:"input-default", id:"hp_name", placeholder:"例）○○病院"%>
+                  </div>
+
+                  <div class="form-group">
+                    <div class='form-text-wrap'>
+                      <label class="form-text">備考</label>
+                      <span class="indispensable">任意</span>
+                    </div>
+                    <%= f.text_field :text, class:"input-default", id:"text", placeholder:"例）伝えたいこと"%>
+                  </div>
+
+                  <div class="form-group">
+                    <div class='form-text-wrap'>
+                      <label class="form-text">身長</label>
+                      <span class="indispensable">任意</span>
+                    </div>
+                    <%= f.text_field :height_id, class:"input-default", id:"height", placeholder:"" %>
+                  </div>
+
+                  <div class="form-group">
+                    <div class='form-text-wrap'>
+                      <label class="form-text">体重</label>
+                      <span class="indispensable">任意</span>
+                    </div>
+                    <%= f.text_field :weight_id, class:"input-default", id:"weight", placeholder:"" %>
+                  </div>
+
+                  <div class="form-group">
+                    <div class='form-text-wrap'>
+                      <label class="form-text">血圧</label>
+                      <span class="indispensable">任意</span>
+                    </div>
+                    <%= f.text_field :pressure_id, class:"input-default", id:"pressure", placeholder:"120/80mmHg" %>
+                  </div>
+
+                  <div class="form-group">
+                    <div class='form-text-wrap'>
+                      <label class="form-text">白血球(WBC)</label>
+                      <span class="indispensable">任意</span>
+                    </div>
+                    <%= f.text_field :wbc_id, class:"input-default", id:"wbc", placeholder:"3.3~8.6" %>
+                  </div>
+
+                  <div class="form-group">
+                    <div class='form-text-wrap'>
+                      <label class="form-text">ヘモグロビン濃度(Hb)</label>
+                      <span class="indispensable">任意</span>
+                    </div>
+                    <%= f.text_field :hb_id, class:"input-default", id:"hb", placeholder:"13.5~17.0" %>
+                  </div>
+
+                  <div class="form-group">
+                    <div class='form-text-wrap'>
+                      <label class="form-text">血小板数(PLT)</label>
+                      <span class="indispensable">任意</span>
+                    </div>
+                    <%= f.text_field :plt_id, class:"input-default", id:"plt", placeholder:"13~37万/μL" %>
+                  </div>
+
+                  <div class="form-group">
+                    <div class='form-text-wrap'>
+                      <label class="form-text">血液凝固系検査値(PT-INR)</label>
+                      <span class="indispensable">任意</span>
+                    </div>
+                    <%= f.text_field :pt_inr_id, class:"input-default", id:"pt_inr", placeholder:"2.0~3.0" %>
+                  </div>
+
+                  <div class="form-group">
+                    <div class='form-text-wrap'>
+                      <label class="form-text">AST</label>
+                      <span class="indispensable">任意</span>
+                    </div>
+                    <%= f.text_field :ast_id, class:"input-default", id:"ast", placeholder:"7~38IU/L" %>
+                  </div>
+
+                  <div class="form-group">
+                    <div class='form-text-wrap'>
+                      <label class="form-text">ALT</label>
+                      <span class="indispensable">任意</span>
+                    </div>
+                    <%= f.text_field :alt_id, class:"input-default", id:"alt", placeholder:"4~44IU/L" %>
+                  </div>
+
+                  <div class="form-group">
+                    <div class='form-text-wrap'>
+                      <label class="form-text">γ-GDP</label>
+                      <span class="indispensable">任意</span>
+                    </div>
+                    <%= f.text_field :gdp_id, class:"input-default", id:"gdp", placeholder:"男性:80IU/L以下,女性:30IU/L以下" %>
+                  </div>
+                  
+                  <div class="form-group">
+                    <div class='form-text-wrap'>
+                      <label class="form-text">血清クレアチニン(Scr)</label>
+                      <span class="indispensable">任意</span>
+                    </div>
+                    <%= f.text_field :scr_id, class:"input-default", id:"scr", placeholder:"男性:0.6~1.1mg/dL,女性:0.4~0.8mg/dL" %>
+                  </div>
+
+                  <div class="form-group">
+                    <div class='form-text-wrap'>
+                      <label class="form-text">糸球濾過量(eGFR)</label>
+                      <span class="indispensable">任意</span>
+                    </div>
+                    <%= f.text_field :egfr_id, class:"input-default", id:"egfr", placeholder:"60.0mL/min以上" %>
+                  </div>
+
+                  <div class="form-group">
+                    <div class='form-text-wrap'>
+                      <label class="form-text">CK(CPK)</label>
+                      <span class="indispensable">任意</span>
+                    </div>
+                    <%= f.text_field :cpk_id, class:"input-default", id:"cpk", placeholder:"男性:57~197,女性:32~180" %>
+                  </div>
+
+                  <div class="form-group">
+                    <div class='form-text-wrap'>
+                      <label class="form-text">カリウム値</label>
+                      <span class="indispensable">任意</span>
+                    </div>
+                    <%= f.text_field :k_id, class:"input-default", id:"k", placeholder:"3.6~4.8" %>
+                  </div>
+                  
+                  <div class="form-group">
+                    <div class='form-text-wrap'>
+                      <label class="form-text">血糖値(HbA1c)</label>
+                      <span class="indispensable">任意</span>
+                    </div>
+                    <%= f.text_field :hba1c_id, class:"input-default", id:"hba1c", placeholder:"4.6~6.2" %>
+                  </div>
+
+                  <div class="actions">
+                    <%= f.submit "記録する！", class: :form__btn  %>
+                    <%= link_to '戻る', drug_histories_path %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+            <!-- /#wrapper -->
+        </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Menu Toggle Script -->
+  <script>
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+  </script>
+
+</body>
+
+</html>
