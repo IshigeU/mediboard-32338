@@ -54,8 +54,8 @@
               <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link' %>
             </li>
           <% else %>
-            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#services">Services</a></li>
-            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">What's mediboard?</a></li>
+            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#services">What's mediboard?</a></li>
+            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">管理人について</a></li>
             <li class="nav-item">
               <%= link_to "新規登録", new_user_registration_path, class: 'nav-link' %>
             </li>
@@ -138,10 +138,10 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8-offset-2 centered">
-            <h1>"セルフメディケーション" が国から推奨されております！</h1>
+            <h1>セルフメディケーション</h1>
             <h4>セルフメディケーションって？</h4>
             <h4>病院にいく時間がないから、ドラッグストアではよく薬を買っているけど、</h4>
-            <h4>種類がいっぱいあってよくわからないよ。</h4>
+            <h4>種類がいっぱいあってよくわからない。</h4>
           </div>
           <!-- /col-lg-8 -->
         </div>
@@ -150,7 +150,7 @@
           <div class="col-lg-4 service">
             <i class="fa fa-star"></i>
             <small>セルフメディケーションとは？</small>
-            <p class="text">「自分自身の健康に責任をもち、軽度な身体の不調は自分で手当てすること」とWHOは定義しています。平均寿命が長くなり、生活習慣病などが問題になってきた現代において、日々をいかに健康に過ごすかが問われています。</p>
+            <p class="text">厚労省より推進されており、「自分自身の健康に責任をもち、軽度な身体の不調は自分で手当てすること」とWHOは定義しています。平均寿命が長くなり、生活習慣病などが問題になってきた現代において、日々をいかに健康に過ごすかが問われています。</p>
           </div>
           <div class="col-lg-4 service">
             <i class="fa fa-cloud"></i>
@@ -160,25 +160,25 @@
           <div class="col-lg-4 service">
             <i class="fa fa-heart"></i>
             <small>セルフメディケーション税制とは？</small>
-            <p class="text">2017年1月より、特定の医薬品購入に対する「セルフメディケーション税制」が始まりました。</p>
+            <p class="text">2017年1月より、特定の医薬品購入に対する「セルフメディケーション税制」が始まりました。医療費控除の特例として、健康の維持増進及び疾病の予防への取組として一定の取組を行う個人が、スイッチＯＴＣ医薬品（要指導医薬品及び一般用医薬品のうち、医療用から転用された医薬品）を購入した際に、その購入費用について所得控除を受けることができます。</p>
           </div>
         </div>
 
         <div class="row mt">
           <div class="col-lg-4 service">
             <i class="fa fa-trophy"></i>
-            <p>PREMIUM QUALITY<br/><small>LOREM IPSUM DOLOR</small></p>
-            <p class="text">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer.</p>
+            <small>スイッチOTCって？</small></p>
+            <p class="text">医療用医薬品として用いられた成分が、OTC医薬品に転換（スイッチ）された医薬品のことで、主な例は解熱鎮痛剤のイブプロフェン、消炎剤のインドメタシン、生理痛用薬のイブプロフェンなどあります。そのほか胃腸薬、鎮痛剤、水虫薬、アレルギー用薬など、種類は幅広く購入できます。</p>
           </div>
           <div class="col-lg-4 service">
             <i class="fa fa-globe"></i>
-            <p>CLOUD SERVICES<br/><small>LOREM IPSUM DOLOR</small></p>
-            <p class="text">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer.</p>
+            <small>OTCってなに？</small></p>
+            <p class="text">OTCとは、Over The Counterの略です。OTC医薬品は、カウンター越しに販売者などの助言を受けた上で、医師の処方箋が無くとも購入できる医薬品である。全般的に医療用医薬品よりもリスクが低いとされています。</p>
           </div>
           <div class="col-lg-4 service">
             <i class="fa fa-lock"></i>
-            <p>SECURED ACCOUNTS<br/><small>LOREM IPSUM DOLOR</small></p>
-            <p class="text">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer.</p>
+            <small>セルフメディケーション税制の申請方法は？</small></p>
+            <p class="text">国税庁の正式ホームページです→<input type="button" onclick="location.href='https://www.nta.go.jp/taxes/shiraberu/shinkoku/tokushu/info-iryouhikoujo.htm'" value="調べる"></p>
           </div>
         </div>
     </div>
@@ -192,24 +192,21 @@
       <div class="row">
         <div class="col-lg-4 name">
           <img class="img-responsive" src="img/IMG_6089.jpg">
-          <p>DANIEL PRATT</p>
+          <p>Yusuke Ishige</p>
           <div class="name-label"></div>
         </div>
         <div class="col-lg-8 name-desc">
-          <h2>TALENTED DESIGNER & <br/>FRONT-END DEVELOPER <br/>ENJOYING THE BEAUTIFUL NYC</h2>
+          <h2>プログラミング学習中！</h2>
           <div class="name-zig"></div>
 
           <div class="col-md-6">
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen
-              book.
+            <p>MSという医療機関へ医薬品を売り込み、届ける仕事に約7年間従事。薬剤師と患者さんの架け橋となるSNSアプリ開発を思いつく。
             </p>
-            <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently
-              with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            <p>Twitterなどで患者さんの質問に答えたり、ブログで情報を提供する薬剤師はいるものの、mediboardのようなお薬の情報だけでなく、薬局や薬剤師の人柄までが知れるアプリは私が知る限りありません。</p>
           </div>
           <div class="col-md-6">
-            <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
-            <p> Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered
-              the undoubtable source. </p>
+            <p>病院や薬局は患者さんで溢れ、今後はますます需要が増すことでしょう。セルフメディケーションでうまく健康を保てれば、病院にいく手間、時間が有意義な時間に使うことができます。</p>
+            <p>もちろん、症状によっては手遅れになる前に直ちに病院へいきましょう。mediboardで薬剤師に気軽に質問して、日本を元気に健康に。</p>
           </div>
 
         </div>
@@ -220,7 +217,6 @@
     <!-- /container -->
   </div>
   <!-- /aboutwrap -->
-
   <div id="testimonials">
     <div class="container">
       <div class="row">
@@ -230,20 +226,13 @@
             <!-- Wrapper for slides -->
             <div class="carousel-inner">
               <div class="item active mb centered">
-                <h3>MARK WEBBER</h3>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen
-                  book.
+                <h3></h3>
+                <p>
                 </p>
               </div>
             </div>
             <!-- Indicators -->
-            <ol class="carousel-indicators">
-              <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-              <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-              <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-            </ol>
           </div>
-
         </div>
       </div>
     </div>
