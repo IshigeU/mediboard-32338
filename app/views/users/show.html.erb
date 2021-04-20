@@ -48,7 +48,7 @@
                 Menu
               </a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <%= link_to '薬歴管理', "#", class: "dropdown-item" %>
+                <%= link_to '薬歴管理', drug_histories_path, class: "dropdown-item" %>
                 <%= link_to 'お薬データベース', "#", class: "dropdown-item" %>
                 <%= link_to '薬剤師検索', "#", class: "dropdown-item" %>
                 <div class="dropdown-divider"></div>
@@ -75,13 +75,13 @@
                     <%= link_to 'フォローする', follow_path(@user.id), method: :POST %>
                   <% end %>
                 <% end %>
-                <% if @user.job.name.present? %>
+                <% if @user.job.present? %>
                   <p class="card-text"><%= @user.job.name %></p>
                 <% end %>
-                <% if @user.age.name.present? %>
+                <% if @user.age.present? %>
                   <p class="card-text"><%= @user.age.name %></p>
                 <% end %>
-                <% if @user.prefecture.name.present? %>
+                <% if @user.prefecture.present? %>
                   <p class="card-text"><%= @user.prefecture.name %></p>
                 <% end %>
                 <% if @user.content.present? %>

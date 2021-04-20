@@ -70,3 +70,7 @@ gem 'geocoder'
 gem 'dotenv-rails'
 
 gem 'gon'
+
+gem 'high_voltage'
+
+gem 'simple_calendar', '~> 2.0'

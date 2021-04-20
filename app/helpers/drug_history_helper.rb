@@ -1,0 +1,2 @@
+module DrugHistoryHelper
+end
