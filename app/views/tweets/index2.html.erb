@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Simple Sidebar - Start Bootstrap Template</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/simple-sidebar.css" rel="stylesheet">
+
+   <!-- Google fonts-->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP&family=Raleway:ital,wght@1,600&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <div class="d-flex" id="wrapper">
+
+    <!-- Sidebar -->
+
+    <%= render partial: "tweets/sidebar-profile" %>
+    
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <button class="btn btn-primary" id="menu-toggle">←→</button>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item font-tweet">
+              <%= link_to '質問を投稿する', new_tweet_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Menu
+              </a>
+              <div class="dropdown-menu dropdown-menu-right font-tweet" aria-labelledby="navbarDropdown">
+                <%= link_to '薬歴管理', drug_histories_path, class: "dropdown-item" %>
+                <%= link_to 'お薬データベース', "#", class: "dropdown-item" %>
+                <%= link_to '薬剤師検索', "#", class: "dropdown-item" %>
+                <div class="dropdown-divider"></div>
+                <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8">
+            <h1 class="my-4 font-tweet">投稿一覧</h1>
+            <div class="card mb-4">
+              <div class="card-body">
+                <% @tweets.each do |tweet| %>
+                  <%= image_tag tweet.image, class: 'card-img-top' if tweet.image.attached? %>
+                  <h2 class="card-title"><%= link_to "#{tweet.title}",tweet_path(tweet.id) %></h2>
+                  <p class="card-text"><%= tweet.text %></p>
+                  <p><%= link_to "#{tweet.user.name}さん","/users/#{tweet.user_id}", class: :card__user %></p>
+                  <% if current_user.liked_by?(tweet.id) %>
+                    <p>
+                      <%= link_to 'いいね外す', destroy_like_path(tweet), method: :DELETE %>
+                      <i class="far fa-smile unlike-btn"></i>
+                      <%= tweet.likes.count %>
+                    </p>
+                  <% else %>
+                    <p>
+                      <%= link_to 'いいねする', create_like_path(tweet), method: :POST %>
+                      <i class="far fa-smile like-btn"></i>
+                      <%= tweet.likes.count %>
+                    </p>
+                  <% end %>
+                  <td><%= link_to '投稿を削除', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <% end %>
+              </div>
+            </div>
+          </div>
+            <!-- /#wrapper -->
+            <!-- Sidebar Widgets Column -->
+          <div class="col-md-4">
+
+            <!-- Search Widget -->
+            <div class="card my-4">
+              <h5 class="card-header">投稿検索</h5>
+              <div class="card-body">
+                <div class="input-group">
+                  <%= form_with url: search_tweets_path, local: true, method: :get do |form| %>
+                    <%= form.text_field :text %>
+                    <%= form.submit "検索" %>
+                  <% end %>
+                </div>
+              </div>
+          </div>
+
+        </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Menu Toggle Script -->
+  <script>
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+  </script>
+
+</body>
+
+</html>
