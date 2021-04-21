@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   end
   resources :drug_histories
   get 'drug_history/index'
-
+  
   # フォローする
   post 'follow/:id' => 'relationships#follow', as: 'follow'
   # フォロー外す
