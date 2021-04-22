@@ -1,71 +1,40 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
 
 <head>
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title>Simple Sidebar - Start Bootstrap Template</title>
-
-  <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Custom styles for this template -->
-  <link href="css/simple-sidebar.css" rel="stylesheet">
-
-   <!-- Google fonts-->
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP&family=Raleway:ital,wght@1,600&display=swap" rel="stylesheet">
-
+  <meta charset="utf-8" />
+  <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="./assets/img/favicon.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>
+    mediboard drug_history/index
+  </title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+  <!-- CSS Files -->
+  <link href="./assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="./assets/css/paper-dashboard.css?v=2.0.1" rel="stylesheet" />
+  <!-- CSS Just for demo purpose, don't include it in your project -->
+  <link href="./assets/demo/demo.css" rel="stylesheet" />
 </head>
 
-<body>
+<body class="">
+    <!-- sidebar -->
+    <%= render partial: "tweets/sidebar" %>
+    <!-- End sidebar -->
 
-  <div class="d-flex" id="wrapper">
-
-    <!-- Sidebar -->
-
-    <%= render partial: "tweets/sidebar-profile" %>
-    
-    <!-- /#sidebar-wrapper -->
-
-    <!-- Page Content -->
-    <div id="page-content-wrapper">
-
-      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-        <button class="btn btn-primary" id="menu-toggle">←→</button>
-
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-            <li class="nav-item">
-              <%= link_to 'マイページ', tweets_path, class: 'nav-link' %>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Menu
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <%= link_to '薬歴管理', drug_histories_path, class: "dropdown-item" %>
-                <%= link_to 'お薬データベース', "#", class: "dropdown-item" %>
-                <%= link_to '薬剤師検索', "#", class: "dropdown-item" %>
-                <div class="dropdown-divider"></div>
-                <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </nav>
-
-      <div class="container">
+    <div class="main-panel" style="height: 100vh;">
+      <!-- Navbar -->
+      <%= render partial: "tweets/navbar" %>
+      <!-- End Navbar -->
+      
+      <!-- content -->
+      <div class="content">
         <div class="row">
-          <div class="col-md-8">
-            <h1 class="my-4 font-tweet">検査値日記</h1>
+          <div class="col-md-12">
+            <h3 class="description">検査値を入力しよう</h3>
             <div class="card mb-4">
               <div class="card-body">
                 <p id="notice"><%= notice %></p>
@@ -107,29 +76,24 @@
               </div>
             </div>
           </div>
-            <!-- /#wrapper -->
         </div>
-    <!-- /.row -->
-
+      </div>
+      <!-- End content -->
+    </div>
   </div>
-  <!-- /.container -->
-
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Menu Toggle Script -->
-  <script>
-    $("#menu-toggle").click(function(e) {
-      e.preventDefault();
-      $("#wrapper").toggleClass("toggled");
-    });
-  </script>
-
+  <!--   Core JS Files   -->
+  <script src="./assets/js/core/jquery.min.js"></script>
+  <script src="./assets/js/core/popper.min.js"></script>
+  <script src="./assets/js/core/bootstrap.min.js"></script>
+  <script src="./assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+  <!--  Google Maps Plugin    -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+  <!-- Chart JS -->
+  <script src="./assets/js/plugins/chartjs.min.js"></script>
+  <!--  Notifications Plugin    -->
+  <script src="./assets/js/plugins/bootstrap-notify.js"></script>
+  <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="./assets/js/paper-dashboard.min.js?v=2.0.1" type="text/javascript"></script>
 </body>
 
 </html>
