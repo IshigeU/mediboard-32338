@@ -617,3 +617,8 @@
    .credits {
      color: #999;
    }
+
+   #map{
+    height: 310px;
+    width: 550px;
+  }

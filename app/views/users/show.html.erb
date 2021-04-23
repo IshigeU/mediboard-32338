@@ -71,15 +71,20 @@
                     <% if @user.sex.present? %>
                       <p class="card-text"><%= @user.sex.name %></p>
                     <% end %>
-                    <% if @user.shop_name.present? %>
-                      <p class="card-text"><%= @user.shop_name %></p>
-                    <% end %>
                     <% if @user.address.present? %>
                       <p class="card-text"><%= @user.address %></p>
                     <% end %>
                     <% if @user.shop_info.present? %>
                       <p class="card-text"><%= @user.shop_info %></p>
                     <% end %>
+                  </div>
+                </div>
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-8">
+                      <h2 class="datespot-name"><%= @user.shop_name %></h2>
+                      <%= render "map-show" %>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -99,7 +104,7 @@
   <script src="./assets/js/core/bootstrap.min.js"></script>
   <script src="./assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
   <!--  Google Maps Plugin    -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCdlmPDZJh0MOC51YNtlcONf22UsdaLWDs&callback=initMap"></script>
   <!-- Chart JS -->
   <script src="./assets/js/plugins/chartjs.min.js"></script>
   <!--  Notifications Plugin    -->
