@@ -134,7 +134,7 @@
       });   
     }
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCdlmPDZJh0MOC51YNtlcONf22UsdaLWDs&callback=initMap" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
 
     <div class="form-group">
       <%= f.label :店舗説明 %>
