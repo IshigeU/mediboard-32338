@@ -74,9 +74,6 @@
                     <% if @user.shop_info.present? %>
                       <p class="card-text"><%= @user.shop_info %></p>
                     <% end %>
-                    <% if @user.shop_name.present? %>
-                      <p class="card-text"><%= @user.shop_name %></p>
-                    <% end %>
                     <% if @user.address.present? %>
                       <h5 id="address"><%= @user.address %></h5>
                     <% end %>
@@ -97,33 +94,35 @@
                       let map
                       let geocoder
                       // 下の1行を追加 
+                      const inputAddress = document.getElementById('address').textContent;
 
                       function initMap(){
                         geocoder = new google.maps.Geocoder()
+
+                        map = new google.maps.Map(document.getElementById('map'), {
+                          center: {lat: 40.7828, lng:-73.9653},
+                          zoom: 12,
+                        });
 
                         marker = new google.maps.Marker({
                           position:  {lat: 40.7828, lng:-73.9653},
                           map: map
                         });
 
-                        title = $('.datespot-name').text();
-
-                        inputAddress = document.getElementById('address').textContent;
-
                         geocoder.geocode( { 'address': inputAddress}, function(results, status) {
                           if (status == 'OK' && results[0]) {
-                            map = new google.maps.Map(target, {
+                            const map = new google.maps.Map(target, {
                               center: results[0].geometry.location,
                               zoom: 15
                             });
 
-                            marker = new google.maps.Marker({
+                            const marker = new google.maps.Marker({
                               position: results[0].geometry.location,
                               map: map,
                             });
 
-                            latlang = new google.maps.LatLng(results[0].geometry.location.lat(),results[0].geometry.location.lng());
-                            content = '<div id="map_content"><p>' + title + '<br/>' + inputAddress + '<br/><a href="https://maps.google.co.jp/maps?q=' + latlng + '&iwloc=J" target="_blank" rel="noopener noreferrer">Googleマップで見る</a></p></div>';
+                            const latlang = new google.maps.LatLng(results[0].geometry.location.lat(),results[0].geometry.location.lng());
+                            const content = '<div id="map_content"><p>' + title + '<br/>' + inputAddress + '<br/><a href="https://maps.google.co.jp/maps?q=' + latlng + '&iwloc=J" target="_blank" rel="noopener noreferrer">Googleマップで見る</a></p></div>';
                             var infowindow = new google.maps.InfoWindow({
                               content: content,
                             });

@@ -62,12 +62,14 @@
                     <li>
                       <p>
                         <%= message.text %>
-                        <%= link_to "削除", tweet_message_path(@tweet, message), method: :delete %>
+                        <% if user_signed_in? && current_user.id == message.user_id %>
+                          <%= link_to "削除", tweet_message_path(@tweet, message), method: :delete %>
+                        <% end %>
                       </p>
                     </li>
-                      <p>
-                        <%= link_to "#{message.user.name}さん", "/users/#{@tweet.user_id}", class: :message_user %>
-                      </p>
+                    <p>
+                      <%= link_to "#{message.user.name}さん", "/users/#{@tweet.user_id}", class: :message_user %>
+                    </p>
                   <% end %>
                 </div>
               </ul>
