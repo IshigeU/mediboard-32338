@@ -55,7 +55,9 @@
                       <%= tweet.likes.count %>
                     </p>
                   <% end %>
-                  <td><%= link_to '投稿を削除', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                  <% if user_signed_in? && current_user.id == tweet.user_id %>
+                    <td><%= link_to '投稿を削除', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                  <% end %>
                 <% end %>
               </div>
             </div>
