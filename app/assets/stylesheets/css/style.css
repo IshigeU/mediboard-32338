@@ -290,12 +290,13 @@
    }
    
    .name-label {
-     width: 60px;
-     height: 60px;
+     width: 180px;
+     height: 180px;
      margin: 0 auto 45px;
      border-top: 1px solid #000;
-     background: url(../img/IMG_6089.jpg) center bottom no-repeat;
-     background-size: 35px 35px;
+     background: url(../img/IMG_6089.jpg) center center no-repeat;
+     background-size: 200px 200px;
+     border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
    }
    
    .name-zig {

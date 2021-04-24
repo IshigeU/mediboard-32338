@@ -71,20 +71,70 @@
                     <% if @user.sex.present? %>
                       <p class="card-text"><%= @user.sex.name %></p>
                     <% end %>
-                    <% if @user.address.present? %>
-                      <p class="card-text"><%= @user.address %></p>
-                    <% end %>
                     <% if @user.shop_info.present? %>
                       <p class="card-text"><%= @user.shop_info %></p>
+                    <% end %>
+                    <% if @user.shop_name.present? %>
+                      <p class="card-text"><%= @user.shop_name %></p>
+                    <% end %>
+                    <% if @user.address.present? %>
+                      <h5 id="address"><%= @user.address %></h5>
                     <% end %>
                   </div>
                 </div>
                 <div class="container">
                   <div class="row">
                     <div class="col-md-8">
-                      <h2 class="datespot-name"><%= @user.shop_name %></h2>
-                      <%= render "map-show" %>
-                    </div>
+                      <div id='map'></div>
+                      <style>
+                      #map {
+                        height: 500px;
+                        width: 500px;
+                      }
+                      </style>
+
+                      <script>
+                      let map
+                      let geocoder
+                      // 下の1行を追加 
+
+                      function initMap(){
+                        geocoder = new google.maps.Geocoder()
+
+                        marker = new google.maps.Marker({
+                          position:  {lat: 40.7828, lng:-73.9653},
+                          map: map
+                        });
+
+                        title = $('.datespot-name').text();
+
+                        inputAddress = document.getElementById('address').textContent;
+
+                        geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+                          if (status == 'OK' && results[0]) {
+                            map = new google.maps.Map(target, {
+                              center: results[0].geometry.location,
+                              zoom: 15
+                            });
+
+                            marker = new google.maps.Marker({
+                              position: results[0].geometry.location,
+                              map: map,
+                            });
+
+                            latlang = new google.maps.LatLng(results[0].geometry.location.lat(),results[0].geometry.location.lng());
+                            content = '<div id="map_content"><p>' + title + '<br/>' + inputAddress + '<br/><a href="https://maps.google.co.jp/maps?q=' + latlng + '&iwloc=J" target="_blank" rel="noopener noreferrer">Googleマップで見る</a></p></div>';
+                            var infowindow = new google.maps.InfoWindow({
+                              content: content,
+                            });
+                          } else {
+                            alert('該当する結果がありませんでした：' + status);
+                            return;
+                          }
+                        });   
+                      }
+                      </script>
+                      <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
                   </div>
                 </div>
               </div>
@@ -104,7 +154,7 @@
   <script src="./assets/js/core/bootstrap.min.js"></script>
   <script src="./assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
   <!--  Google Maps Plugin    -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCdlmPDZJh0MOC51YNtlcONf22UsdaLWDs&callback=initMap"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap"></script>
   <!-- Chart JS -->
   <script src="./assets/js/plugins/chartjs.min.js"></script>
   <!--  Notifications Plugin    -->
