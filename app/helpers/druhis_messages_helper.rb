@@ -1,0 +1,2 @@
+module DruhisMessagesHelper
+end
