@@ -123,6 +123,37 @@
         </div>
       </div>
       <!-- End content -->
+      <div class="col-md-8">
+        <h3 class="description">コメント</h3>
+        <div class="card mb-4">
+          <div class="card-body">
+            <% if user_signed_in? %>
+              <%= form_with(model: [@drug_history, @druhis_message], local: true) do |f| %>
+                <%= f.text_field :text %>
+                <%= f.submit 'コメント！' %>
+              <% end %>
+            <% end %>
+            <ul>
+              <div class="comments_lists">
+                <p></p>
+                <% @druhis_messages.each do |druhis_message| %>
+                  <li>
+                    <p>
+                      <%= druhis_message.text %>
+                      <% if user_signed_in? && current_user.id == druhis_message.user_id %>
+                        <%= button_to "削除", drug_history_druhis_message_path(@drug_history, druhis_message), method: :delete %>
+                      <% end %>
+                    </p>
+                  </li>
+                  <p>
+                    <%= link_to "#{druhis_message.user.name}さん", "/users/#{@drug_history.user_id}", class: :message_user %>
+                  </p>
+                <% end %>
+              </div>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <!--   Core JS Files   -->

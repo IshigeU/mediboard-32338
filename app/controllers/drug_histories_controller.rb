@@ -10,6 +10,8 @@ class DrugHistoriesController < ApplicationController
 
   def show
     @drug_history = DrugHistory.find(params[:id])
+    @druhis_message = DruhisMessage.new
+    @druhis_messages = @drug_history.druhis_messages.includes(:user)
   end
 
   def create

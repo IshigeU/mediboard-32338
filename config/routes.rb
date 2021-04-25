@@ -11,9 +11,12 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
-  resources :drug_histories
+  resources :drug_histories do
+    resources :druhis_messages, only: [:create, :destroy]
+  end
   get 'drug_history/index'
-  
+  delete 'books/:id'=> 'books#destroy', as: 'destroy_book'
+  delete 'druhis_messages/:id'=> 'druhis_messages#destroy', as: 'destroy_druhis_message'
   # フォローする
   post 'follow/:id' => 'relationships#follow', as: 'follow'
   # フォロー外す
