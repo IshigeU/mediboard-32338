@@ -17,7 +17,7 @@ class DrugHistoriesController < ApplicationController
   def create
     @drug_history = DrugHistory.new(drughistory_params)
     if @drug_history.save
-      redirect_to root_path(@drug_history.id)
+      redirect_to tweets_path(@drug_history.id)
     else
       render :new
     end
