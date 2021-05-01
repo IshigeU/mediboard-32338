@@ -22,6 +22,8 @@ class User < ApplicationRecord
 
   with_options presence: true do
     validates :name
+    #passwordは英数字混合
+    validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i }
   end
   
   # フォロー取得
