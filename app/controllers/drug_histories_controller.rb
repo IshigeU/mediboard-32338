@@ -1,4 +1,5 @@
 class DrugHistoriesController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     @drug_histories = DrugHistory.all
