@@ -1,157 +1,162 @@
-<div class="container-fluid py-4 mw-md">
-  <h1><%= t('プロフィール編集', resource: resource_name.to_s.humanize) %></h1>
-
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-    <%= bootstrap_devise_error_messages! %>
-
-    <div class="form-group">
-      <%= f.label :アカウント名 %>
-      <%= f.text_field :name, autofocus: true, autocomplete: 'name', class: 'form-control' %>
-    </div>
-
-    <div class="field">
-      <%= f.label :image, "プロフィール写真" %><br />
-      <%= f.file_field :image %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :email %>
-      <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control' %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :password %>
-      <%= f.password_field :password, autocomplete: 'new-password', class: 'form-control' %>
-
-      <small class="form-text text-muted"><%= t('.leave_blank_if_you_don_t_want_to_change_it') %></small>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :password_confirmation %>
-      <%= f.password_field :password_confirmation, autocomplete: 'new-password', class: 'form-control'  %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :current_password %>
-      <%= f.password_field :current_password, autocomplete: 'current-password', class: 'form-control' %>
-
-      <small class="form-text text-muted"><%= t('.we_need_your_current_password_to_confirm_your_changes') %></small>
-    </div>
-    
-    <div class="form-group">
-      <div class='form-text-wrap'>
-        <label class="form-text">お住まいの地域</label>
-        <span class="indispensable">任意</span>
+<script src="https://code.jquery.com/jquery-2.1.0.min.js" ></script>
+<body>
+  <div id="formWrapper">
+    <div id="form">
+      <div class="logo a">
+       <h1><a href="/">Log In</a></h1>
       </div>
-      <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"select-box", id:"prefecture"}) %>
-    </div>
+        <h1><%= t('プロフィール編集', resource: resource_name.to_s.humanize) %></h1>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <%= bootstrap_devise_error_messages! %>
 
-    <div class="form-group">
-      <div class='form-text-wrap'>
-        <label class="form-text">性別</label>
-        <span class="indispensable">任意</span>
-      </div>
-      <%= f.collection_select(:sex_id, Sex.all, :id, :name, {}, {class:"select-box", id:"sex"}) %>
-    </div>
+          <div class="formLabel">
+            <%= f.label :アカウント名 %>
+            <%= f.text_field :name, autofocus: true, autocomplete: 'name', class: 'form-style' %>
+          </div>
 
-    <div class="form-group">
-      <div class='form-text-wrap'>
-        <label class="form-text">年齢</label>
-        <span class="indispensable">任意</span>
-      </div>
-      <%= f.collection_select(:age_id, Age.all, :id, :name, {}, {class:"select-box", id:"age"}) %>
-    </div>
+          <div class="formLabel">
+            <%= f.label :image, "プロフィール写真" %><br />
+            <%= f.file_field :image %>
+          </div>
 
-    <div class="form-group">
-      <div class='form-text-wrap'>
-        <label class="form-text">お仕事</label>
-        <span class="indispensable">任意</span>
-      </div>
-      <%= f.collection_select(:job_id, Job.all, :id, :name, {}, {class:"select-box", id:"job"}) %>
-    </div>
+          <div class="formLabel">
+            <%= f.label :email %>
+            <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-style' %>
+          </div>
 
-    <div class="form-group">
-      <%= f.label :店舗名 %>
-      <%= f.text_field :shop_name, autofocus: true, autocomplete: 'shop_name', class: 'form-control' %>
-    </div>
+          <div class="formLabel">
+            <%= f.label :password %>
+            <%= f.password_field :password, autocomplete: 'new-password', class: 'form-style' %>
 
-    <div class="form-group">
-      <%= f.label :店舗住所 %>
-      <%= f.text_field :address, autofocus: true, autocomplete: 'address', class: 'form-control' %>
-    </div>
-    
-    <h2>gmap</h2>
+            <small class="form-text text-muted"><%= t('.leave_blank_if_you_don_t_want_to_change_it') %></small>
+          </div>
 
-    <input id="address" type="textbox" value="GeekSalon">
-    <input type="button" value="Encode" onclick="codeAddress()">
-    <!-- 下の1行を追加 -->
-    <div id="display">何かが表示される、、、、！</div>
+          <div class="formLabel">
+            <%= f.label :password_confirmation %>
+            <%= f.password_field :password_confirmation, autocomplete: 'new-password', class: 'form-style'  %>
+          </div>
 
-    <div id='map'></div>
+          <div class="formLabel">
+            <%= f.label :current_password %>
+            <%= f.password_field :current_password, autocomplete: 'current-password', class: 'form-style' %>
 
-    <style>
-    #map {
-      height: 600px;
-      width: 600px;
-    }
-    </style>
+            <small class="form-text text-muted"><%= t('.we_need_your_current_password_to_confirm_your_changes') %></small>
+          </div>
+          
+          <div class="formLabel">
+            <div class='form-text-wrap'>
+              <label class="form-text">お住まいの地域</label>
+              <span class="indispensable">任意</span>
+            </div>
+            <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"select-box", id:"prefecture"}) %>
+          </div>
 
-    <script>
-    let map
-    let geocoder
-    // 下の1行を追加 
-    const display = document.getElementById('display')
+          <div class="formLabel">
+            <div class='form-text-wrap'>
+              <label class="form-text">性別</label>
+              <span class="indispensable">任意</span>
+            </div>
+            <%= f.collection_select(:sex_id, Sex.all, :id, :name, {}, {class:"select-box", id:"sex"}) %>
+          </div>
 
-    function initMap(){
-      geocoder = new google.maps.Geocoder()
+          <div class="formLabel">
+            <div class='form-text-wrap'>
+              <label class="form-text">年齢</label>
+              <span class="indispensable">任意</span>
+            </div>
+            <%= f.collection_select(:age_id, Age.all, :id, :name, {}, {class:"select-box", id:"age"}) %>
+          </div>
 
-      map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: 40.7828, lng:-73.9653},
-        zoom: 12,
-      });
+          <div class="formLabel">
+            <div class='form-text-wrap'>
+              <label class="form-text">お仕事</label>
+              <span class="indispensable">任意</span>
+            </div>
+            <%= f.collection_select(:job_id, Job.all, :id, :name, {}, {class:"select-box", id:"job"}) %>
+          </div>
 
-      marker = new google.maps.Marker({
-        position:  {lat: 40.7828, lng:-73.9653},
-        map: map
-      });
-    }
+          <div class="formLabel">
+            <%= f.label :店舗名 %>
+            <%= f.text_field :shop_name, autofocus: true, autocomplete: 'shop_name', class: 'form-style' %>
+          </div>
 
-    function codeAddress(){
-      let inputAddress = document.getElementById('address').value;
+          <div class="formLabel">
+            <%= f.label :店舗住所 %>
+            <%= f.text_field :address, autofocus: true, autocomplete: 'address', class: 'form-style' %>
+          </div>
 
-      geocoder.geocode( { 'address': inputAddress}, function(results, status) {
-        if (status == 'OK') {
-          map.setCenter(results[0].geometry.location);
-          var marker = new google.maps.Marker({
-              map: map,
-              position: results[0].geometry.location
-          });
+          <input id="address" type="textbox" value="GeekSalon">
+          <input type="button" value="Encode" onclick="codeAddress()">
+          <!-- 下の1行を追加 -->
+          <div id="display"></div>
+
+          <div id='map'></div>
+
+          <style>
+          #map {
+            height: 600px;
+            width: 600px;
+          }
+          </style>
+
+          <script>
+          let map
+          let geocoder
           // 下の1行を追加 
-          display.textContent = "検索結果：" + results[ 0 ].geometry.location
-        } else {
-          alert('該当する結果がありませんでした：' + status);
-        }
-      });   
-    }
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
+          const display = document.getElementById('display')
 
-    <div class="form-group">
-      <%= f.label :店舗説明 %>
-      <%= f.text_field :shop_info, autofocus: true, autocomplete: 'shop_info', class: 'form-control' %>
+          function initMap(){
+            geocoder = new google.maps.Geocoder()
+
+            map = new google.maps.Map(document.getElementById('map'), {
+              center: {lat: 40.7828, lng:-73.9653},
+              zoom: 12,
+            });
+
+            marker = new google.maps.Marker({
+              position:  {lat: 40.7828, lng:-73.9653},
+              map: map
+            });
+          }
+
+          function codeAddress(){
+            let inputAddress = document.getElementById('address').value;
+
+            geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+              if (status == 'OK') {
+                map.setCenter(results[0].geometry.location);
+                var marker = new google.maps.Marker({
+                    map: map,
+                    position: results[0].geometry.location
+                });
+                // 下の1行を追加 
+                display.textContent = "検索結果：" + results[ 0 ].geometry.location
+              } else {
+                alert('該当する結果がありませんでした：' + status);
+              }
+            });   
+          }
+            </script>
+            <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
+
+            <div class="formLabel">
+              <%= f.label :店舗説明 %>
+              <%= f.text_field :shop_info, autofocus: true, autocomplete: 'shop_info', class: 'form-style' %>
+            </div>
+
+            <div class="formLabel">
+              <%= f.label :自己紹介 %>
+              <%= f.text_field :content, autofocus: true, autocomplete: 'content', class: 'form-style' %>
+            </div>
+
+            <div class="formLabel">
+              <%= f.submit t('.update'), class: 'btn btn-light' %>
+            </div>
+        <% end %>
+       <p><%= t('.unhappy') %>? <%= link_to t('.cancel_my_account'), registration_path(resource_name), data: { confirm: t('.are_you_sure') }, method: :delete %>.</p>
+       <%= link_to t('.戻る'), :back %>
+      </div>
     </div>
-
-    <div class="form-group">
-      <%= f.label :自己紹介 %>
-      <%= f.text_field :content, autofocus: true, autocomplete: 'content', class: 'form-control' %>
-    </div>
-
-    <div class="form-group">
-      <%= f.submit t('.update'), class: 'btn btn-light' %>
-    </div>
-  <% end %>
-
-  <p><%= t('.unhappy') %>? <%= link_to t('.cancel_my_account'), registration_path(resource_name), data: { confirm: t('.are_you_sure') }, method: :delete %>.</p>
-
-  <%= link_to t('.戻る'), :back %>
-</div>
+  </div>
+</body>
+</html>
