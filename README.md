@@ -1,8 +1,7 @@
 # README
 # アプリケーション名
  "mediboard"
- "mediboard"は薬剤師と患者さんとが気軽につながり、コミュニケーションがはかれるSNSです。くすりのことならなんでも聞ける環境があります。
- いつも混んでいる病院、薬局。"mediboard"なら、時間を選ばず質問ができます。
+ * "mediboard"は薬剤師と患者さんとが気軽につながり、コミュニケーションがはかれるSNSです。くすりのことならなんでも聞ける環境があります。いつも混んでいる病院、薬局。"mediboard"なら、時間を選ばず質問ができます。
  
  
 # DEMO
@@ -18,10 +17,10 @@
 
 # Features
 "mediboard"を活用するメリット
-* かかりつけの薬剤師がみつかります
-* くすりのアドバイザーがみつかります
+* かかりつけの薬剤師がみつかります(くすりのアドバイザー)
 * くすりの疑問が解決できます
 * ユーザーが増えればそれだけ、情報が蓄積します
+* セルフメディケーションの知識が向上します
 
 
 # Note
@@ -30,7 +29,7 @@
 
 # URL
 ○Github URL
- 
+* 
 ○テストユーザー
 * Email: test@test.com
 * Pass: ishige1106
@@ -75,7 +74,7 @@
  
 
 # テーブル設計
-## **users テーブル**
+# **users テーブル**
 
 | Column                | Type     | Options                   |
 | --------------------- | -------- | ------------------------- |
@@ -93,7 +92,7 @@
 | latitude              | float    |                           |
 | longitude             | float    |                           |
 
-# アソシエーション
+## アソシエーション
 * has_many :tweets
 * has_many :messages
 * has_many :druhis_messages
@@ -109,7 +108,7 @@
 * has_many :follower_user, through: :followed, source: :follower
 
 
-## **relationships テーブル**
+# **relationships テーブル**
 * フォロー・フォロワー
 
 | Column            | Type        | Options                                        |
@@ -117,12 +116,12 @@
 | follower_id       | integer     | null: false, foreign_key: { to_table: :users } |
 | followed_id       | integer     | null: false, foreign_key: { to_table: :users } |
 
-# アソシエーション
+## アソシエーション
 * belongs_to :follower, class_name: "User"
 * belongs_to :followed, class_name: "User"
 
 
-## **tweets テーブル**
+# **tweets テーブル**
 * 投稿
 
 | Column            | Type        | Options                        |
@@ -131,7 +130,7 @@
 | text              | text        | null: false                    |
 | user              | references  | null: false, foreign_key: true |
 
-# アソシエーション
+## アソシエーション
 * belongs_to :user
 * has_many :messages, dependent: :destroy
 * has_one_attached :image
@@ -143,7 +142,7 @@
 
 
 
-## **messages テーブル**
+# **messages テーブル**
 * 投稿コメント
 
 | Column           | Type         | Options                        |
@@ -152,13 +151,13 @@
 | user             | references   | null: false, foreign_key: true |
 | tweet            | references   | null: false, foreign_key: true |
 
-# アソシエーション
+## アソシエーション
 * belongs_to :user
 * belongs_to :tweet
 
 
 
-## **likes テーブル**
+# **likes テーブル**
 * いいね機能
 
 | Column           | Type         | Options                        |
@@ -166,12 +165,12 @@
 | user_id          | integer      | null: false, foreign_key: true |
 | tweet_id         | integer      | null: false, foreign_key: true |
 
-# アソシエーション
+## アソシエーション
 * belongs_to :user
 * belongs_to :tweet
 
 
-## **drug_history テーブル**
+# **drug_history テーブル**
 * 薬歴管理(検査値の記録項目)
 
 | Column           | Type          | Options                        |
@@ -197,6 +196,6 @@
 | hba1c_id         | integer       |                                |
 | user             | references    | null: false, foreign_key: true |
 
-# アソシエーション
+## アソシエーション
 * belongs_to :user
 * has_many :druhis_messages, dependent: :destroy
