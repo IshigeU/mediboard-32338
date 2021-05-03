@@ -8,7 +8,7 @@
  
 # DEMO
  
- [![Image from Gyazo](https://i.gyazo.com/6b38fc8e83bb7b133fdfd920d4db365c.gif)](https://gyazo.com/6b38fc8e83bb7b133fdfd920d4db365c)
+ [![(https://gyazo.com/6b38fc8e83bb7b133fdfd920d4db365c)]
  
 
 # Features
