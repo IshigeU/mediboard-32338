@@ -1,4 +1,69 @@
 # README
+# アプリケーション名
+ 
+ "mediboard"
+ "mediboard"は薬剤師と患者さんとが気軽につながり、コミュニケーションがはかれるSNSです。くすりのことならなんでも聞ける環境があります。
+ いつも混んでいる病院、薬局。"mediboard"なら、時間を選ばず質問ができます。
+ 
+ 
+# DEMO
+ 
+ [![Image from Gyazo](https://i.gyazo.com/6b38fc8e83bb7b133fdfd920d4db365c.gif)](https://gyazo.com/6b38fc8e83bb7b133fdfd920d4db365c)
+ 
+
+# Features
+ 
+"mediboard"を活用するメリット
+* かかりつけの薬剤師がみつかります
+* くすりのアドバイザーがみつかります
+* くすりの疑問が解決できます
+* ユーザーが増えればそれだけ、情報が蓄積します
+ 
+
+# Requirement
+ 
+"hoge"を動かすのに必要なライブラリなどを列挙する
+ 
+* huga 3.5.2
+* hogehuga 1.0.2
+ 
+# Installation
+ 
+Requirementで列挙したライブラリなどのインストール方法を説明する
+ 
+```bash
+pip install huga_package
+```
+ 
+# Usage
+ 
+DEMOの実行方法など、"hoge"の基本的な使い方を説明する
+ 
+```bash
+git clone https://github.com/hoge/~
+cd examples
+python demo.py
+```
+ 
+# Note
+ 
+* 病状によっては直ちに医療機関を受診しましょう。
+ 
+
+# Author
+ 
+作成情報を列挙する
+ 
+* Yusuke Ishige
+* theishigedeluxe@gmail.com
+* MSという医薬品の卸の経験から、"mediboard"を考案しました。ブログやTwitterなどで情報発信している薬剤師の存在を知り、"mediboard"上で、こういった情報が集約されたら、とても便利になると考えます。
+ 
+# License
+ライセンスを明示する
+ 
+"hoge" is under [MIT license](https://en.wikipedia.org/wiki/MIT_License).
+ 
+# テーブル設計
 ## **users テーブル**
 
 | Column                | Type     | Options                   |
