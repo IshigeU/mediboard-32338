@@ -79,3 +79,5 @@ gem 'high_voltage'
 gem 'simple_calendar', '~> 2.0'
 
 gem 'pry-rails'
+
+gem "mimemagic", "~> 0.3.10"
