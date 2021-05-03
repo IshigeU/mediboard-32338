@@ -66,8 +66,32 @@
                     <% if @user.content.present? %>
                       <p class="card-text"><%= @user.content %></p>
                     <% end %>
-                    <p><%= "フォロー数: #{@user.follower.count}" %></p>
-                    <p><%= "フォロワー数: #{@user.followed.count}" %></p>
+                    <p><%= "フォロー: #{@user.follower.count}" %></p>
+                    <p><%= "フォロワー: #{@user.followed.count}" %></p>
+                    <h4>フォロー一覧</h4>
+                    <% @user.following_user.where.not(id: current_user.id).each do |user| %>
+                      <p>
+                        <%= "ユーザー名: #{user.name}さん" %>
+                        <% if current_user.following?(user) %>
+                          <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
+                        <% else %>
+                          <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
+                        <% end %>
+                        <%= link_to "プロフィール", user_path(user) %>
+                      </p>
+                    <% end %>
+                  <h4>フォロワー一覧</h4>
+                    <% @user.follower_user.where.not(id: current_user.id).each do |user| %>
+                      <p>
+                        <%= "ユーザー名: #{user.name}さん" %>
+                        <% if current_user.following?(user) %>
+                          <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
+                        <% else %>
+                          <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
+                        <% end %>
+                        <%= link_to "プロフィール", user_path(user) %>
+                      </p>
+                    <% end %>
                     <% if @user.sex.present? %>
                       <p class="card-text"><%= @user.sex.name %></p>
                     <% end %>
