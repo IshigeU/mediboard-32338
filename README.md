@@ -12,6 +12,9 @@
  * マイページ
  ![0457a6f95e1848ca7912644027233e56](https://user-images.githubusercontent.com/75792991/116855495-6eac6200-ac34-11eb-9e93-977b23bd6bfd.gif)
 
+ * 薬歴管理
+ ![e381062dbfaec30c2389367e5dd6f6bf](https://user-images.githubusercontent.com/75792991/116876191-0753d980-ac57-11eb-89d7-bdb67b466ee7.gif)
+
 
 # Features
 "mediboard"を活用するメリット
@@ -26,12 +29,12 @@
  
 
 # URL
-* Github URL
+○Github URL
  
-* テストユーザー
- * Email: test@test.com
- * Pass: ishige1106
- * name: Voyaju
+○テストユーザー
+* Email: test@test.com
+* Pass: ishige1106
+* name: Voyaju
 
 
 # 使用技術
@@ -40,27 +43,23 @@
 
 
 # 機能一覧
-* ユーザー登録およびログイン機能(devise)
- * アカウント編集機能
-  * プロフィールの追加機能(Active_hash,Google API,geocoder)
-* 質問投稿機能
- * コメント機能
- * 文字検索機能
-* 薬歴管理機能
- * スケジュール管理機能(simple_calendar 2.0)
- * 健康診断の検査値記録機能
-* プライバシーポリシー(high_voltage)
-* RSpec(モデルの単体テスト)
-* HTML/CSS(BootStrap)
+○ユーザー登録およびログイン機能(devise)
+* アカウント編集機能
+* プロフィールの追加機能(Active_hash,Google API,geocoder)
+○質問投稿機能
+* コメント機能
+* 文字検索機能
+○薬歴管理機能
+* スケジュール管理機能(simple_calendar 2.0)
+* 健康診断の検査値記録機能
+○プライバシーポリシー(high_voltage)
+○RSpec(モデルの単体テスト)
+○HTML/CSS(BootStrap)
 
 # テスト
-* RSpec 
- * userモデル(単体テスト)
- * Tweetモデル(単体テスト)
-
-
-# Note
-* 病状によっては直ちに医療機関を受診しましょう。
+○RSpec 
+* userモデル(単体テスト)
+* Tweetモデル(単体テスト)
  
 
 # Author
@@ -95,19 +94,19 @@
 | longitude             | float    |                           |
 
 # アソシエーション
-has_many :tweets
-has_many :messages
-has_many :druhis_messages
-has_one  :drug_history
-has_one_attached :image
-belongs_to_active_hash :prefecture
-belongs_to_active_hash :sex
-belongs_to_active_hash :age
-belongs_to_active_hash :job
-has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy #フォロー取得
-has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy #フォロワー取得
-has_many :following_user, through: :follower, source: :followed # 自分がフォローしている人
-has_many :follower_user, through: :followed, source: :follower # 自分をフォローしている人
+* has_many :tweets
+* has_many :messages
+* has_many :druhis_messages
+* has_one  :drug_history
+* has_one_attached :image
+* belongs_to_active_hash :prefecture
+* belongs_to_active_hash :sex
+* belongs_to_active_hash :age
+* belongs_to_active_hash :job
+* has_many :follower, class_name: "Relationship", foreign_key: "follower_id",dependent: :destroy
+* has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+* has_many :following_user, through: :follower, source: :followed
+* has_many :follower_user, through: :followed, source: :follower
 
 
 ## **relationships テーブル**
@@ -119,8 +118,8 @@ has_many :follower_user, through: :followed, source: :follower # 自分をフォ
 | followed_id       | integer     | null: false, foreign_key: { to_table: :users } |
 
 # アソシエーション
-belongs_to :follower, class_name: "User"
-belongs_to :followed, class_name: "User"
+* belongs_to :follower, class_name: "User"
+* belongs_to :followed, class_name: "User"
 
 
 ## **tweets テーブル**
@@ -133,18 +132,14 @@ belongs_to :followed, class_name: "User"
 | user              | references  | null: false, foreign_key: true |
 
 # アソシエーション
-belongs_to :user
-has_many :messages, dependent: :destroy
-has_one_attached :image
-has_many :likes
-# フォロー取得
-has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
-# フォロワー取得
-has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
-# 自分がフォローしている人
-has_many :following_user, through: :follower, source: :followed
-# 自分をフォローしている人
-has_many :follower_user, through: :followed, source: :follower
+* belongs_to :user
+* has_many :messages, dependent: :destroy
+* has_one_attached :image
+* has_many :likes
+* has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+* has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+* has_many :following_user, through: :follower, source: :followed
+* has_many :follower_user, through: :followed, source: :follower
 
 
 
@@ -158,8 +153,8 @@ has_many :follower_user, through: :followed, source: :follower
 | tweet            | references   | null: false, foreign_key: true |
 
 # アソシエーション
-belongs_to :user
-belongs_to :tweet
+* belongs_to :user
+* belongs_to :tweet
 
 
 
@@ -172,8 +167,8 @@ belongs_to :tweet
 | tweet_id         | integer      | null: false, foreign_key: true |
 
 # アソシエーション
-belongs_to :user
-belongs_to :tweet
+* belongs_to :user
+* belongs_to :tweet
 
 
 ## **drug_history テーブル**
@@ -203,5 +198,5 @@ belongs_to :tweet
 | user             | references    | null: false, foreign_key: true |
 
 # アソシエーション
-belongs_to :user
-has_many :druhis_messages, dependent: :destroy
+* belongs_to :user
+* has_many :druhis_messages, dependent: :destroy
