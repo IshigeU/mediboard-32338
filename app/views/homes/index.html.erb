@@ -64,10 +64,11 @@
     <!-- Navigation-->
 
   <section id="home" name="home"></section>
-  <div id="headerwrap">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 col-md-offset-3">
+  <%= image_tag "mediboard-top.jpg", class:"headerwrap"%>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="logo1-h1">
           <h1>medi board</h1>
         </div>
       </div>
@@ -186,11 +187,11 @@
       <div class="row">
         <div class="col-lg-4 name">
           <p>Yusuke Ishige</p>
-          <div class="name-label"></div>
+          <%= image_tag "IMG_6089.jpg", class: "name-label" %>
         </div>
         <div class="col-lg-8 name-desc">
+         <%= image_tag "name-zig.png", class: "name-zig" %>
           <h2>プログラミング学習中！</h2>
-          <div class="name-zig"></div>
 
           <div class="col-md-6">
             <p>MSという医療機関へ医薬品を売り込み、届ける仕事に約7年間従事。薬剤師と患者さんの架け橋となるSNSアプリ開発を思いつく。
@@ -201,6 +202,7 @@
             <p>病院や薬局は患者さんで溢れ、今後はますます需要が増すことでしょう。セルフメディケーションでうまく健康を保てれば、病院にいく手間、時間が有意義な時間に使うことができます。</p>
             <p>もちろん、症状によっては手遅れになる前に直ちに病院へいきましょう。mediboardで薬剤師に気軽に質問して、日本を元気に健康に。</p>
           </div>
+          <%= image_tag "name-zig.png", class: "name-zig" %>
 
         </div>
 
@@ -229,9 +231,9 @@
       </div>
     </div>
   </div>
-  <div class="logo a">
-    <h1><a href="/">Log In</a></h1>
-  </div>
+
+  <%= image_tag "medi-board_logo2.png", class:"logo-a"%>
+
   <section id="contact" name="contact"></section>
   <div class="sep contact" data-stellar-background-ratio="0.5"></div>
 
