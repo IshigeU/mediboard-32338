@@ -69,6 +69,7 @@
      font-family: "Oswald", sans-serif;
      font-weight: 300;
    }
+
    
    /* ==========================================================================
       MENU CONFIGURATION
@@ -254,7 +255,7 @@
        background-size: cover;
    }
    
-   .logo1-h1 {
+   .logo1 {
      color:#ffffff;
      margin-top: 90px;
      padding-bottom: 30px;
@@ -618,5 +619,28 @@
 		height: 250px;
 		font-size: 0;
     margin: auto;
-		background-image: image-url("medi-board_logo2.png") center top/250px auto no-repeat;
+		background-image: image-url("mediboard-logo2.png") center top/250px auto no-repeat;
 	}
+
+  .main-logo {
+    display: block;
+		width: 50%;
+		height: 50%;
+		font-size: 0;
+    margin: auto;
+		background-image: image-url("mediboard-logo5.jpg") center top/250px auto no-repeat;
+  }
+
+  .logo-under-font{
+    font-family: 'Shippori Mincho', serif;
+    font-weight: 100;
+    font-size: 60px;
+    color: #000;
+  }
+
+  .logo-under-font2{
+    font-family: 'Raleway', sans-serif;
+    font-weight: 100;
+    font-size: 60px;
+    color: #000;
+  }
