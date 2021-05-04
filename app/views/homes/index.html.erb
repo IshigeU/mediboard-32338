@@ -13,6 +13,9 @@
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Oswald:400,300,700|Lato:400,700" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:ital@1&display=swap" rel="stylesheet">
 
   <!-- Bootstrap CSS File -->
   <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -28,7 +31,7 @@
 
 <body>
     <!-- Navigation-->
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top py-3" id="mainNav">
     <div class="container">
       <a class="navbar-brand js-scroll-trigger" href="#page-top">mediboard</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -64,14 +67,11 @@
     <!-- Navigation-->
 
   <section id="home" name="home"></section>
-  <%= image_tag "mediboard-top.jpg", class:"headerwrap"%>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <div class="logo1-h1">
-          <h1>medi board</h1>
-        </div>
-      </div>
+  <div class="headerwrap">
+    <div class="container">
+      <%= image_tag "mediboard-logo5.jpg", class:"main-logo"%>
+      <h1 class="logo-under-font">セルフメディケーションアプリ</h1>
+      <h1 class="logo-under-font2">mediboard</h1>
     </div>
   </div>
 
@@ -232,7 +232,8 @@
     </div>
   </div>
 
-  <%= image_tag "medi-board_logo2.png", class:"logo-a"%>
+  <%= image_tag "mediboard-logo2.png", class:"logo-a" %>
+
 
   <section id="contact" name="contact"></section>
   <div class="sep contact" data-stellar-background-ratio="0.5"></div>
