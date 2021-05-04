@@ -242,7 +242,7 @@
       ========================================================================== */
    
    #headerwrap {
-     background: url(../img/volodymyr-hryshchenko-e8YFkjN2CzY-unsplash.jpg) no-repeat center top;
+     background-image: image-url("volodymyr-hryshchenko-e8YFkjN2CzY-unsplash.jpg") no-repeat center top;
      margin-top: 0px;
      padding-top:120px;
      text-align:center;
