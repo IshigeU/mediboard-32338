@@ -43,9 +43,7 @@ https://mediboard-32338.herokuapp.com/
 https://github.com/IshigeU/mediboard-32338.git
 
 * テストユーザー
-Email: test@test.com
-Pass: ishige1106
-name: Voyaju
+Email: test@test.com / Pass: ishige1106 / name: Voyaju
 
 
 # 使用技術
@@ -63,12 +61,12 @@ name: Voyaju
 ## 薬歴管理機能
 * スケジュール管理機能(simple_calendar 2.0)
 * 健康診断の検査値記録機能
-## プライバシーポリシー(high_voltage)
-## RSpec(モデルの単体テスト)
-## HTML/CSS(BootStrap)
+## その他
+* プライバシーポリシー(high_voltage)
+* RSpec(モデルの単体テスト)
+* HTML/CSS(BootStrap)
 
-# テスト
-## RSpec 
+# テスト(RSpec) 
 * userモデル(単体テスト)
 * Tweetモデル(単体テスト)
  
