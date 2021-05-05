@@ -2,7 +2,7 @@ class DrugHistoriesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @drug_histories = DrugHistory.all
+    @drug_histories = DrugHistory.where(user_id: current_user.id)
   end
   
   def new

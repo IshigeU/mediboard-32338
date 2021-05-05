@@ -41,17 +41,18 @@
               </thead>
 
               <tbody>
-                <% if user_signed_in? && current_user.id == @drug_historie.present? %>
+                <%# if current_user.id == @drug_histories.present? %>
                   <% @drug_histories.each do |drug_history| %>
-                    <tr>
-                      <td><%= drug_history.start_time %></td>
-
-                      <td><%= link_to '詳細', drug_history %></td>
-                      <td><%= link_to '編集', edit_drug_history_path(drug_history.id) %></td>
-                      <td><%= link_to '削除',drug_history_path(drug_history.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                    </tr>
+                    <% if user_signed_in? && current_user.id == drug_history.user_id %>
+                      <tr>
+                        <td><%= drug_history.start_time %></td>
+                        <td><%= link_to '詳細', drug_history %></td>
+                        <td><%= link_to '編集', edit_drug_history_path(drug_history.id) %></td>
+                        <td><%= link_to '削除',drug_history_path(drug_history.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                      </tr>
+                    <% end %>
                   <% end %>
-                <% end %>
+                <%# end %>
               </tbody>
             </table>
 
@@ -61,12 +62,10 @@
             
             <%= month_calendar events: @drug_histories do |date, drug_histories| %>
               <%= date.day %>
-              <% if user_signed_in? && current_user.id == @drug_historie.present? %>
-                <% drug_histories.each do |drug_history| %>
-                  <div>
-                    <%= link_to drug_history.hp_name, drug_history %>
-                  </div>
-                <% end %>
+              <% drug_histories.each do |drug_history| %>
+                <div>
+                  <%= link_to drug_history.hp_name, drug_history %>
+                </div>
               <% end %>
             <% end %>
             <%= link_to 'マイページへ', tweets_path %>

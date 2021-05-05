@@ -6,21 +6,29 @@
  
 # DEMO
  * トップページ
- ![6b38fc8e83bb7b133fdfd920d4db365c](https://user-images.githubusercontent.com/75792991/116854897-61db3e80-ac33-11eb-9083-abb2ff795b9f.gif)
+ ![c16d1d8ad5a6ded63cf5b38ca25c3f1b](https://user-images.githubusercontent.com/75792991/117117683-cbda1c00-adca-11eb-9d19-a56ee0724b0b.gif)
 
  * マイページ
- ![0457a6f95e1848ca7912644027233e56](https://user-images.githubusercontent.com/75792991/116855495-6eac6200-ac34-11eb-9e93-977b23bd6bfd.gif)
+![0e1b7ba6a6dc317954322f20a6d71692](https://user-images.githubusercontent.com/75792991/117117953-1eb3d380-adcb-11eb-9158-e4bea796490b.gif)
 
- * 薬歴管理
- ![e381062dbfaec30c2389367e5dd6f6bf](https://user-images.githubusercontent.com/75792991/116876191-0753d980-ac57-11eb-89d7-bdb67b466ee7.gif)
+ * ユーザーページ
+![f034cb5ce1d2f263c2e40ea3d8c1f497](https://user-images.githubusercontent.com/75792991/117146849-985db880-adef-11eb-947d-a13f8a334b08.gif)
+
+
+ * 薬歴管理機能
+![3a62280928dabc099117618a10846b61](https://user-images.githubusercontent.com/75792991/117146542-46b52e00-adef-11eb-90c9-9605e5baf3fa.gif)
+
 
 
 # Features
 "mediboard"を活用するメリット
-* かかりつけの薬剤師がみつかります(くすりのアドバイザー)
+* かかりつけの薬剤師がみつかります(くすりの自分専属アドバイザー)
 * くすりの疑問が解決できます
-* ユーザーが増えればそれだけ、情報が蓄積します
+* ユーザーが増えればそのぶん情報が蓄積します
 * セルフメディケーションの知識が向上します
+* 薬剤師の立場が向上、PRになります
+* "対面でつながる時代"から"オンラインでつながる時代"へ
+* 今後サービスが充実すれば、服薬指導の一括管理が可能です
 
 
 # Note
@@ -28,8 +36,10 @@
  
 
 # URL
+○heroku URL
+* https://mediboard-32338.herokuapp.com/
 ○Github URL
-* 
+* https://github.com/IshigeU/mediboard-32338.git
 ○テストユーザー
 * Email: test@test.com
 * Pass: ishige1106
@@ -65,12 +75,6 @@
 * 製作者: Yusuke Ishige
 * Email: theishigedeluxe@gmail.com
 * 作成背景: MSという医薬品卸営業の経験から、"mediboard"を考案しました。ブログやTwitterなどで積極的に情報発信している薬剤師の存在を知り、"mediboard"上で、こういった情報が集約されたら、とても便利になると考えます。また、"mediboard"がフル活用できるとセルフメディケーションの推進に役立ちます。
- 
-
-# License
-ライセンスを明示する
- 
-"hoge" is under [MIT license](https://en.wikipedia.org/wiki/MIT_License).
  
 
 # テーブル設計

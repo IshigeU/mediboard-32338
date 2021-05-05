@@ -107,7 +107,9 @@
                 </tr>
               </tbody>
             </table> 
-            <%= link_to '編集', edit_drug_history_path(@drug_history) %> |
+            <% if user_signed_in? && current_user.id == @druhis_message.user_id %>
+              <%= link_to '編集', edit_drug_history_path(@drug_history) %>
+            <% end %>
             <%= link_to '戻る', drug_histories_path %>
             <%= link_to 'マイページへ', tweets_path %>
           </div>
@@ -121,7 +123,7 @@
     <div class="card mb-4">
       <div class="card-body">
         <% if user_signed_in? %>
-          <%= form_with(model: [@drug_history, @druhis_message], local: true) do |f| %>
+          <%= form_with(model: [@drug_history, @druhis_message], url: "/drug_histories/#{@drug_history.id}/druhis_messages", method: :post, local: true) do |f| %>
             <%= f.text_field :text %>
             <%= f.submit 'コメント！' %>
           <% end %>
