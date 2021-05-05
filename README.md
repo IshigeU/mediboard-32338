@@ -1,27 +1,27 @@
 # README
 # アプリケーション名
- "mediboard"
+ ## "mediboard"
  * "mediboard"は薬剤師と患者さんとが気軽につながり、コミュニケーションがはかれるSNSです。くすりのことならなんでも聞ける環境があります。いつも混んでいる病院、薬局。"mediboard"なら、時間を選ばず質問ができます。
  
  
 # DEMO
- * トップページ
+ ## トップページ
  ![c16d1d8ad5a6ded63cf5b38ca25c3f1b](https://user-images.githubusercontent.com/75792991/117117683-cbda1c00-adca-11eb-9d19-a56ee0724b0b.gif)
 
- * マイページ
+ ## マイページ
 ![0e1b7ba6a6dc317954322f20a6d71692](https://user-images.githubusercontent.com/75792991/117117953-1eb3d380-adcb-11eb-9158-e4bea796490b.gif)
 
- * ユーザーページ
+ ## ユーザーページ
 ![f034cb5ce1d2f263c2e40ea3d8c1f497](https://user-images.githubusercontent.com/75792991/117146849-985db880-adef-11eb-947d-a13f8a334b08.gif)
 
 
- * 薬歴管理機能
+ ## 薬歴管理機能
 ![3a62280928dabc099117618a10846b61](https://user-images.githubusercontent.com/75792991/117146542-46b52e00-adef-11eb-90c9-9605e5baf3fa.gif)
 
 
 
 # Features
-"mediboard"を活用するメリット
+## "mediboard"を活用するメリット
 * かかりつけの薬剤師がみつかります(くすりの自分専属アドバイザー)
 * くすりの疑問が解決できます
 * ユーザーが増えればそのぶん情報が蓄積します
@@ -32,18 +32,20 @@
 
 
 # Note
-病状によっては直ちに医療機関を受診しましょう。
+病状によっては直ちに医療機関を受診しましょう
  
 
 # URL
-○heroku URL
-* https://mediboard-32338.herokuapp.com/
-○Github URL
-* https://github.com/IshigeU/mediboard-32338.git
-○テストユーザー
-* Email: test@test.com
-* Pass: ishige1106
-* name: Voyaju
+* heroku URL
+https://mediboard-32338.herokuapp.com/
+
+* Github URL
+https://github.com/IshigeU/mediboard-32338.git
+
+* テストユーザー
+Email: test@test.com
+Pass: ishige1106
+name: Voyaju
 
 
 # 使用技術
@@ -52,27 +54,27 @@
 
 
 # 機能一覧
-○ユーザー登録およびログイン機能(devise)
+## ユーザー登録およびログイン機能(devise)
 * アカウント編集機能
 * プロフィールの追加機能(Active_hash,Google API,geocoder)
-○質問投稿機能
+## 質問投稿機能
 * コメント機能
 * 文字検索機能
-○薬歴管理機能
+## 薬歴管理機能
 * スケジュール管理機能(simple_calendar 2.0)
 * 健康診断の検査値記録機能
-○プライバシーポリシー(high_voltage)
-○RSpec(モデルの単体テスト)
-○HTML/CSS(BootStrap)
+## プライバシーポリシー(high_voltage)
+## RSpec(モデルの単体テスト)
+## HTML/CSS(BootStrap)
 
 # テスト
-○RSpec 
+## RSpec 
 * userモデル(単体テスト)
 * Tweetモデル(単体テスト)
  
 
 # Author
-* 製作者: Yusuke Ishige
+## 製作者: Yusuke Ishige
 * Email: theishigedeluxe@gmail.com
 * 作成背景: MSという医薬品卸営業の経験から、"mediboard"を考案しました。ブログやTwitterなどで積極的に情報発信している薬剤師の存在を知り、"mediboard"上で、こういった情報が集約されたら、とても便利になると考えます。また、"mediboard"がフル活用できるとセルフメディケーションの推進に役立ちます。
  
