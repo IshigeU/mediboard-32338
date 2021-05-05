@@ -25,132 +25,169 @@
   <%= render partial: "tweets/nav_sidebar"%>
   <!-- content -->
   <div class="content">
-    <div class="row">
-      <div class="col-md-8">
-        <h3 class="description">ユーザー紹介</h3>
-        <div class="card mb-3" style="max-width: 540px;">
-          <div class="row no-gutters">
-            <div class="col-md-4">
-              <% if @user.image.present? %>
-                <div class="text-center">
-                  <%= image_tag(@user.image ,class:"img-fluid rounded img-thumbnail float-left")%>
-                </div>
-              <% end %>
-            </div>
-            <div class="col-md-8">
-              <div class="card-body">
-                <h4 class="card-title"><%= @user.name %>さん</h4>
-                <% unless @user == current_user %>
-                  <% if current_user.following?(@user) %>
-                    <%= link_to 'フォロー外す', unfollow_path(@user.id), method: :POST %>
-                  <% else %>
-                    <%= link_to 'フォローする', follow_path(@user.id), method: :POST %>
-                  <% end %>
-                <% end %>
-                <% if @user.job.present? %>
-                  <p class="card-text"><%= @user.job.name %></p>
-                <% end %>
-                <% if @user.age.present? %>
-                  <p class="card-text"><%= @user.age.name %></p>
-                <% end %>
-                <% if @user.prefecture.present? %>
-                  <p class="card-text"><%= @user.prefecture.name %></p>
-                <% end %>
-                <% if @user.content.present? %>
-                  <p class="card-text"><%= @user.content %></p>
-                <% end %>
-                <p><%= "フォロー: #{@user.follower.count}" %></p>
-                <p><%= "フォロワー: #{@user.followed.count}" %></p>
-                <h4>フォロー一覧</h4>
-                <% @user.following_user.where.not(id: current_user.id).each do |user| %>
-                  <p>
-                    <%= "ユーザー名: #{user.name}さん" %>
-                    <% if current_user.following?(user) %>
-                      <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
-                    <% else %>
-                      <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
-                    <% end %>
-                    <%= link_to "プロフィール", user_path(user) %>
-                  </p>
-                <% end %>
-              <h4>フォロワー一覧</h4>
-                <% @user.follower_user.where.not(id: current_user.id).each do |user| %>
-                  <p>
-                    <%= "ユーザー名: #{user.name}さん" %>
-                    <% if current_user.following?(user) %>
-                      <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
-                    <% else %>
-                      <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
-                    <% end %>
-                    <%= link_to "プロフィール", user_path(user) %>
-                  </p>
-                <% end %>
-                <% if @user.sex.present? %>
-                  <p class="card-text"><%= @user.sex.name %></p>
-                <% end %>
-                <% if @user.shop_info.present? %>
-                  <p class="card-text"><%= @user.shop_info %></p>
-                <% end %>
-                <% if @user.address.present? %>
-                  <h5 id="address"><%= @user.address %></h5>
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+      <div class="col">
+        <div class="card" style="max-width: 540px;">
+          <h3 class="description">ユーザー紹介</h3>
+          <div class="card" style="max-width: 540px;">
+            <div class="row no-gutters">
+              <div class="col-4">
+                <% if @user.image.present? %>
+                  <div class="text-center">
+                    <%= image_tag(@user.image ,class:"img-fluid rounded img-thumbnail float-left")%>
+                  </div>
                 <% end %>
               </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h4 class="card-title"><%= @user.name %>さん</h4>
+                  <% unless @user == current_user %>
+                    <% if current_user.following?(@user) %>
+                      <%= link_to 'フォロー外す', unfollow_path(@user.id), method: :POST %>
+                    <% else %>
+                      <%= link_to 'フォローする', follow_path(@user.id), method: :POST %>
+                    <% end %>
+                  <% end %>
+                  <% if @user.job.present? %>
+                    <p class="card-text"><%= @user.job.name %></p>
+                  <% end %>
+                  <% if @user.age.present? %>
+                    <p class="card-text"><%= @user.age.name %></p>
+                  <% end %>
+                  <% if @user.prefecture.present? %>
+                    <p class="card-text"><%= @user.prefecture.name %></p>
+                  <% end %>
+                  <% if @user.content.present? %>
+                    <p class="card-text"><%= @user.content %></p>
+                  <% end %>
+                  <p><%= "フォロー: #{@user.follower.count}" %></p>
+                  <p><%= "フォロワー: #{@user.followed.count}" %></p>
+                  <h4>フォロー一覧</h4>
+                  <% @user.following_user.where.not(id: current_user.id).each do |user| %>
+                    <p>
+                      <%= "ユーザー名: #{user.name}さん" %>
+                      <% if current_user.following?(user) %>
+                        <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
+                      <% else %>
+                        <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
+                      <% end %>
+                      <%= link_to "プロフィール", user_path(user) %>
+                    </p>
+                  <% end %>
+                <h4>フォロワー一覧</h4>
+                  <% @user.follower_user.where.not(id: current_user.id).each do |user| %>
+                    <p>
+                      <%= "ユーザー名: #{user.name}さん" %>
+                      <% if current_user.following?(user) %>
+                        <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
+                      <% else %>
+                        <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
+                      <% end %>
+                      <%= link_to "プロフィール", user_path(user) %>
+                    </p>
+                  <% end %>
+                  <% if @user.sex.present? %>
+                    <p class="card-text"><%= @user.sex.name %></p>
+                  <% end %>
+                  <% if @user.shop_info.present? %>
+                    <p class="card-text"><%= @user.shop_info %></p>
+                  <% end %>
+                  <% if @user.address.present? %>
+                    <h5 id="address"><%= @user.address %></h5>
+                  <% end %>
+                </div>
+              </div>
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div id='map'></div>
+                    <style>
+                    #map {
+                      height: 500px;
+                      width: 500px;
+                    }
+                    </style>
+
+                    <script>
+                    let map
+                    let geocoder
+                    // 下の1行を追加 
+                    const inputAddress = document.getElementById('address').textContent;
+
+                    function initMap(){
+                      geocoder = new google.maps.Geocoder()
+
+                      map = new google.maps.Map(document.getElementById('map'), {
+                        center: {lat: 40.7828, lng:-73.9653},
+                        zoom: 12,
+                      });
+
+                      marker = new google.maps.Marker({
+                        position:  {lat: 40.7828, lng:-73.9653},
+                        map: map
+                      });
+
+                      geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+                        if (status == 'OK' && results[0]) {
+                          const map = new google.maps.Map(target, {
+                            center: results[0].geometry.location,
+                            zoom: 15
+                          });
+
+                          const marker = new google.maps.Marker({
+                            position: results[0].geometry.location,
+                            map: map,
+                          });
+
+                          const latlang = new google.maps.LatLng(results[0].geometry.location.lat(),results[0].geometry.location.lng());
+                          const content = '<div id="map_content"><p>' + title + '<br/>' + inputAddress + '<br/><a href="https://maps.google.co.jp/maps?q=' + latlng + '&iwloc=J" target="_blank" rel="noopener noreferrer">Googleマップで見る</a></p></div>';
+                          var infowindow = new google.maps.InfoWindow({
+                            content: content,
+                          });
+                        } else {
+                          alert('該当する結果がありませんでした：' + status);
+                          return;
+                        }
+                      });   
+                    }
+                    </script>
+                    <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
+                </div>
+              </div>
             </div>
-            <div class="container">
-              <div class="row">
-                <div class="col-md-8">
-                  <div id='map'></div>
-                  <style>
-                  #map {
-                    height: 500px;
-                    width: 500px;
-                  }
-                  </style>
-
-                  <script>
-                  let map
-                  let geocoder
-                  // 下の1行を追加 
-                  const inputAddress = document.getElementById('address').textContent;
-
-                  function initMap(){
-                    geocoder = new google.maps.Geocoder()
-
-                    map = new google.maps.Map(document.getElementById('map'), {
-                      center: {lat: 40.7828, lng:-73.9653},
-                      zoom: 12,
-                    });
-
-                    marker = new google.maps.Marker({
-                      position:  {lat: 40.7828, lng:-73.9653},
-                      map: map
-                    });
-
-                    geocoder.geocode( { 'address': inputAddress}, function(results, status) {
-                      if (status == 'OK' && results[0]) {
-                        const map = new google.maps.Map(target, {
-                          center: results[0].geometry.location,
-                          zoom: 15
-                        });
-
-                        const marker = new google.maps.Marker({
-                          position: results[0].geometry.location,
-                          map: map,
-                        });
-
-                        const latlang = new google.maps.LatLng(results[0].geometry.location.lat(),results[0].geometry.location.lng());
-                        const content = '<div id="map_content"><p>' + title + '<br/>' + inputAddress + '<br/><a href="https://maps.google.co.jp/maps?q=' + latlng + '&iwloc=J" target="_blank" rel="noopener noreferrer">Googleマップで見る</a></p></div>';
-                        var infowindow = new google.maps.InfoWindow({
-                          content: content,
-                        });
-                      } else {
-                        alert('該当する結果がありませんでした：' + status);
-                        return;
-                      }
-                    });   
-                  }
-                  </script>
-                  <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row row-cols-1 row-cols-md-1 g-4">
+      <div class="col">
+        <div class="card h-100">
+          <div class="card-body">
+            <div class="col-md-12">
+              <h3 class="description">自分の投稿</h3>
+                <% @tweets.each do |tweet| %>
+                  <%= image_tag tweet.image, class: 'card-img-top' if tweet.image.attached? %>
+                  <h2 class="card-title"><%= link_to "#{tweet.title}",tweet_path(tweet.id) %></h2>
+                  <p class="card-text"><%= tweet.text %></p>
+                  <p><%= link_to "#{tweet.user.name}さん","/users/#{tweet.user_id}", class: :card__user %></p>
+                  <% if current_user.liked_by?(tweet.id) %>
+                    <p>
+                      <%#= link_to 'いいね外す', destroy_like_path(tweet), method: :DELETE %>
+                      <i class="far fa-smile unlike-btn"></i>
+                      <%= tweet.likes.count %>
+                    </p>
+                  <% else %>
+                    <p>
+                      <%#= link_to 'いいねする', create_like_path(tweet), method: :POST %>
+                      <i class="far fa-smile like-btn"></i>
+                      <%= tweet.likes.count %>
+                    </p>
+                  <% end %>
+                  <% if user_signed_in? && current_user.id == tweet.user_id %>
+                    <td><%= link_to '投稿を削除', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                  <% end %>
+                <% end %>
+                </div>
               </div>
             </div>
           </div>
