@@ -21,138 +21,129 @@
 </head>
 
 <body class="">
-    <!-- sidebar -->
-    <%= render partial: "tweets/sidebar" %>
-    <!-- End sidebar -->
-
-    <div class="main-panel" style="height: 100vh;">
-      <!-- Navbar -->
-      <%= render partial: "tweets/navbar" %>
-      <!-- End Navbar -->
-      
-      <!-- content -->
-      <div class="content">
-        <div class="row">
-          <div class="col-md-4">
-            <h3 class="description">検査値の記録</h3>
-            <div class="card mb-4">
-              <div class="card-body">
-                <p id="notice"><%= notice %></p>
-                <table class="table">
-                  <tbody>
-                    <tr>
-                      <th class="table__col1">時間</th>
-                      <td class="table__col2"><%= @drug_history.start_time.strftime("%Y-%m-%d %H:%M") %></td>
-                    </tr>
-                    <tr>
-                      <th class="table__col1">内容</th>
-                      <td class="table__col2"><%= @drug_history.text %></td>
-                    </tr>
-                    <tr>
-                      <th class="table__col1">医療機関名</th>
-                      <td class="table__col2"><%= @drug_history.hp_name %></td>
-                    </tr>
-                    <tr>
-                      <th class="table__col1">身長</th>
-                      <td class="table__col2"><%= @drug_history.height_id %></td>
-                    </tr>
-                    <tr>
-                      <th class="table__col1">体重</th>
-                      <td class="table__col2"><%= @drug_history.weight_id %></td>
-                    </tr>
-                    <tr>
-                      <th class="table__col1">血圧</th>
-                      <td class="table__col2"><%= @drug_history.pressure_id %></td>
-                    </tr>
-                    <tr>
-                      <th class="table__col1">白血球(WBC)</th>
-                      <td class="table__col2"><%= @drug_history.wbc_id %></td>
-                    </tr>
-                    <tr>
-                      <th class="table__col1">ヘモグロビン濃度(Hb)</th>
-                      <td class="table__col2"><%= @drug_history.hb_id %></td>
-                    </tr>
-                    <tr>
-                      <th class="table__col1">血小板数(PLT)</th>
-                      <td class="table__col2"><%= @drug_history.plt_id %></td>
-                    </tr>
-                    <tr>
-                      <th class="table__col1">血液凝固系検査値(PT-INR)</th>
-                      <td class="table__col2"><%= @drug_history.pt_inr_id %></td>
-                    </tr>
-                    <tr>
-                      <th class="table__col1">AST</th>
-                      <td class="table__col2"><%= @drug_history.ast_id %></td>
-                    </tr>
-                    <tr>
-                      <th class="table__col1">ALT</th>
-                      <td class="table__col2"><%= @drug_history.alt_id %></td>
-                    </tr>
-                    <tr>
-                      <th class="table__col1">γ-GDP</th>
-                      <td class="table__col2"><%= @drug_history.gdp_id %></td>
-                    </tr>
-                    <tr>
-                      <th class="table__col1">血清クレアチニン(Scr)</th>
-                      <td class="table__col2"><%= @drug_history.scr_id %></td>
-                    </tr>
-                    <tr>
-                      <th class="table__col1">糸球濾過量(eGFR)</th>
-                      <td class="table__col2"><%= @drug_history.egfr_id %></td>
-                    </tr>
-                    <tr>
-                      <th class="table__col1">CK(CPK)</th>
-                      <td class="table__col2"><%= @drug_history.cpk_id %></td>
-                    </tr>
-                    <tr>
-                      <th class="table__col1">カリウム値</th>
-                      <td class="table__col2"><%= @drug_history.k_id %></td>
-                    </tr>
-                    <tr>
-                      <th class="table__col1">血糖値(HbA1c)</th>
-                      <td class="table__col2"><%= @drug_history.hba1c_id %></td>
-                    </tr>
-                  </tbody>
-                </table> 
-                <%= link_to '編集', edit_drug_history_path(@drug_history) %> |
-                <%= link_to '戻る', drug_histories_path %>
-                <%= link_to 'マイページへ', tweets_path %>
-              </div>
-            </div>
+  <!-- nav_sidebar -->
+  <%= render partial: "tweets/nav_sidebar"%>
+  <!-- content -->
+  <div class="content">
+    <div class="row">
+      <div class="col-md-4">
+        <h3 class="description">検査値の記録</h3>
+        <div class="card mb-4">
+          <div class="card-body">
+            <p id="notice"><%= notice %></p>
+            <table class="table">
+              <tbody>
+                <tr>
+                  <th class="table__col1">時間</th>
+                  <td class="table__col2"><%= @drug_history.start_time.strftime("%Y-%m-%d %H:%M") %></td>
+                </tr>
+                <tr>
+                  <th class="table__col1">内容</th>
+                  <td class="table__col2"><%= @drug_history.text %></td>
+                </tr>
+                <tr>
+                  <th class="table__col1">医療機関名</th>
+                  <td class="table__col2"><%= @drug_history.hp_name %></td>
+                </tr>
+                <tr>
+                  <th class="table__col1">身長</th>
+                  <td class="table__col2"><%= @drug_history.height_id %></td>
+                </tr>
+                <tr>
+                  <th class="table__col1">体重</th>
+                  <td class="table__col2"><%= @drug_history.weight_id %></td>
+                </tr>
+                <tr>
+                  <th class="table__col1">血圧</th>
+                  <td class="table__col2"><%= @drug_history.pressure_id %></td>
+                </tr>
+                <tr>
+                  <th class="table__col1">白血球(WBC)</th>
+                  <td class="table__col2"><%= @drug_history.wbc_id %></td>
+                </tr>
+                <tr>
+                  <th class="table__col1">ヘモグロビン濃度(Hb)</th>
+                  <td class="table__col2"><%= @drug_history.hb_id %></td>
+                </tr>
+                <tr>
+                  <th class="table__col1">血小板数(PLT)</th>
+                  <td class="table__col2"><%= @drug_history.plt_id %></td>
+                </tr>
+                <tr>
+                  <th class="table__col1">血液凝固系検査値(PT-INR)</th>
+                  <td class="table__col2"><%= @drug_history.pt_inr_id %></td>
+                </tr>
+                <tr>
+                  <th class="table__col1">AST</th>
+                  <td class="table__col2"><%= @drug_history.ast_id %></td>
+                </tr>
+                <tr>
+                  <th class="table__col1">ALT</th>
+                  <td class="table__col2"><%= @drug_history.alt_id %></td>
+                </tr>
+                <tr>
+                  <th class="table__col1">γ-GDP</th>
+                  <td class="table__col2"><%= @drug_history.gdp_id %></td>
+                </tr>
+                <tr>
+                  <th class="table__col1">血清クレアチニン(Scr)</th>
+                  <td class="table__col2"><%= @drug_history.scr_id %></td>
+                </tr>
+                <tr>
+                  <th class="table__col1">糸球濾過量(eGFR)</th>
+                  <td class="table__col2"><%= @drug_history.egfr_id %></td>
+                </tr>
+                <tr>
+                  <th class="table__col1">CK(CPK)</th>
+                  <td class="table__col2"><%= @drug_history.cpk_id %></td>
+                </tr>
+                <tr>
+                  <th class="table__col1">カリウム値</th>
+                  <td class="table__col2"><%= @drug_history.k_id %></td>
+                </tr>
+                <tr>
+                  <th class="table__col1">血糖値(HbA1c)</th>
+                  <td class="table__col2"><%= @drug_history.hba1c_id %></td>
+                </tr>
+              </tbody>
+            </table> 
+            <%= link_to '編集', edit_drug_history_path(@drug_history) %> |
+            <%= link_to '戻る', drug_histories_path %>
+            <%= link_to 'マイページへ', tweets_path %>
           </div>
         </div>
       </div>
-      <!-- End content -->
-      <div class="col-md-8">
-        <h3 class="description">コメント</h3>
-        <div class="card mb-4">
-          <div class="card-body">
-            <% if user_signed_in? %>
-              <%= form_with(model: [@drug_history, @druhis_message], local: true) do |f| %>
-                <%= f.text_field :text %>
-                <%= f.submit 'コメント！' %>
-              <% end %>
+    </div>
+  </div>
+  <!-- End content -->
+  <div class="col-md-8">
+    <h3 class="description">コメント</h3>
+    <div class="card mb-4">
+      <div class="card-body">
+        <% if user_signed_in? %>
+          <%= form_with(model: [@drug_history, @druhis_message], local: true) do |f| %>
+            <%= f.text_field :text %>
+            <%= f.submit 'コメント！' %>
+          <% end %>
+        <% end %>
+        <ul>
+          <div class="comments_lists">
+            <p></p>
+            <% @druhis_messages.each do |druhis_message| %>
+              <li>
+                <p>
+                  <%= druhis_message.text %>
+                  <% if user_signed_in? && current_user.id == druhis_message.user_id %>
+                    <%= button_to "削除", drug_history_druhis_message_path(@drug_history, druhis_message), method: :delete %>
+                  <% end %>
+                </p>
+              </li>
+              <p>
+                <%= link_to "#{druhis_message.user.name}さん", "/users/#{@drug_history.user_id}", class: :message_user %>
+              </p>
             <% end %>
-            <ul>
-              <div class="comments_lists">
-                <p></p>
-                <% @druhis_messages.each do |druhis_message| %>
-                  <li>
-                    <p>
-                      <%= druhis_message.text %>
-                      <% if user_signed_in? && current_user.id == druhis_message.user_id %>
-                        <%= button_to "削除", drug_history_druhis_message_path(@drug_history, druhis_message), method: :delete %>
-                      <% end %>
-                    </p>
-                  </li>
-                  <p>
-                    <%= link_to "#{druhis_message.user.name}さん", "/users/#{@drug_history.user_id}", class: :message_user %>
-                  </p>
-                <% end %>
-              </div>
-            </ul>
           </div>
-        </div>
+        </ul>
       </div>
     </div>
   </div>
