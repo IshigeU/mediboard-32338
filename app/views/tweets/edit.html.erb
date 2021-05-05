@@ -21,50 +21,41 @@
 </head>
 
 <body class="">
-    <!-- sidebar -->
-    <%= render partial: "tweets/sidebar" %>
-    <!-- End sidebar -->
-
-    <div class="main-panel" style="height: 100vh;">
-      <!-- Navbar -->
-      <%= render partial: "tweets/navbar" %>
-      <!-- End Navbar -->
-      
-      <!-- content -->
-      <div class="content">
-        <div class="row">
-          <div class="col-md-12">
-            <h3 class="description">編集する</h3>
-            <div class="card mb-4">
-              <div class="card-body">
-                <%= form_with(model: @tweet, local: true) do |f|%>
-                  <div class="field form-group">
-                    <%= f.label :title, "タイトル" %><br />
-                    <%= f.text_field :title, class: "form-text text-muted" %>
-                  </div>
-
-                  <div class="field form-group">
-                    <%= f.label :text, "質問の内容" %><br />
-                    <%= f.text_area :text, class: "form-text text-muted" %>
-                  </div>
-
-                  <div class="field">
-                    <%= f.label :image, "処方箋またはおくすりの写真" %><br />
-                    <%= f.file_field :image %>
-                  </div>
-
-                  <div class="actions">
-                    <%= f.submit "編集して投稿！", class: "btn btn-light" %>
-                  </div>
-                <% end %>
+  <!-- nav_sidebar -->
+  <%= render partial: "tweets/nav_sidebar"%>
+  <!-- content -->
+  <div class="content">
+    <div class="row">
+      <div class="col-md-12">
+        <h3 class="description">編集する</h3>
+        <div class="card mb-4">
+          <div class="card-body">
+            <%= form_with(model: @tweet, local: true) do |f|%>
+              <div class="field form-group">
+                <%= f.label :title, "タイトル" %><br />
+                <%= f.text_field :title, class: "form-text text-muted" %>
               </div>
-            </div>
+
+              <div class="field form-group">
+                <%= f.label :text, "質問の内容" %><br />
+                <%= f.text_area :text, class: "form-text text-muted" %>
+              </div>
+
+              <div class="field">
+                <%= f.label :image, "処方箋またはおくすりの写真" %><br />
+                <%= f.file_field :image %>
+              </div>
+
+              <div class="actions">
+                <%= f.submit "編集して投稿！", class: "btn btn-light" %>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>
-      <!-- End content -->
     </div>
   </div>
+  <!-- End content -->
   <!--   Core JS Files   -->
   <script src="./assets/js/core/jquery.min.js"></script>
   <script src="./assets/js/core/popper.min.js"></script>
