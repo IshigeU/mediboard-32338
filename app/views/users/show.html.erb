@@ -164,7 +164,7 @@
         <div class="card h-100">
           <div class="card-body">
             <div class="col-md-12">
-              <h3 class="description">自分の投稿</h3>
+              <h3 class="description">今までの投稿</h3>
                 <% @tweets.each do |tweet| %>
                   <%= image_tag tweet.image, class: 'card-img-top' if tweet.image.attached? %>
                   <h2 class="card-title"><%= link_to "#{tweet.title}",tweet_path(tweet.id) %></h2>
